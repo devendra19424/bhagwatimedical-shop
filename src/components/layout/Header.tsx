@@ -1,10 +1,14 @@
 
-import { ShoppingCart, User } from "lucide-react";
+import { ShoppingCart, User, Languages } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Switch } from "@/components/ui/switch";
+import { useLanguage, translations } from "@/context/LanguageContext";
 
 const Header = () => {
+  const { lang, toggleLanguage } = useLanguage();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
       <div className="container flex h-16 items-center justify-between">
@@ -24,19 +28,29 @@ const Header = () => {
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
               </svg>
             </div>
-            <span className="text-xl font-bold">भगवती मेडिकल स्टोर</span>
+            <span className="text-xl font-bold">{translations.storeName[lang]}</span>
           </Link>
         </div>
-        
+
         <div className="hidden flex-1 mx-10 md:flex">
           <Input
             type="search"
-            placeholder="खोजें दवाइयां, उपचार, रोग..."
+            placeholder={translations.searchPlaceholder[lang]}
             className="max-w-sm mx-auto"
           />
         </div>
-        
+
         <div className="flex items-center gap-4">
+          <div className="flex items-center">
+            <Languages className="h-5 w-5 mr-2" />
+            <Switch
+              checked={lang === "hi"}
+              onCheckedChange={toggleLanguage}
+              aria-label="Toggle Language"
+            />
+            <span className="ml-2 text-xs">{lang === "hi" ? "हिन्दी" : "English"}</span>
+          </div>
+
           <Link to="/cart">
             <Button variant="ghost" className="relative" size="icon">
               <ShoppingCart className="h-5 w-5" />
@@ -45,14 +59,14 @@ const Header = () => {
               </span>
             </Button>
           </Link>
-          
+
           <Link to="/login">
             <Button variant="outline" size="sm" className="hidden md:flex gap-2">
               <User className="h-4 w-4" />
-              लॉगिन / रजिस्टर
+              {translations.login[lang]}
             </Button>
           </Link>
-          
+
           <Link to="/login" className="md:hidden">
             <Button variant="ghost" size="icon">
               <User className="h-5 w-5" />

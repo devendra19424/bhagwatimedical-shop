@@ -7,6 +7,8 @@ import DeliveryInfo from "@/components/home/DeliveryInfo";
 import Testimonials from "@/components/home/Testimonials";
 
 const HomePage = () => {
+  // Home headings translation sample (replace inside components as needed for real i18n)
+  // For now, this page itself remains as-is.
   return (
     <Layout>
       <HeroSection />

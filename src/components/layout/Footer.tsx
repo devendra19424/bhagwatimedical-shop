@@ -1,51 +1,58 @@
 
 import { Link } from "react-router-dom";
+import { useLanguage, translations } from "@/context/LanguageContext";
 
 const Footer = () => {
+  const { lang } = useLanguage();
+
   return (
     <footer className="bg-gray-50 border-t">
       <div className="container py-8 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-lg font-bold mb-4">भगवती मेडिकल स्टोर</h3>
+            <h3 className="text-lg font-bold mb-4">{translations.storeName[lang]}</h3>
             <p className="text-gray-600 mb-4">
-              इटारसी में विश्वसनीय औषधि वितरण के लिए। अब घर बैठे दवाइयां मंगवाएं।
+              {lang === "hi"
+                ? "इटारसी में विश्वसनीय औषधि वितरण के लिए। अब घर बैठे दवाइयां मंगवाएं।"
+                : "Trusted medicine delivery in Itarsi. Now order medicines at home."}
             </p>
             <p className="text-gray-600">
-              <strong>पता:</strong> मुख्य बाज़ार, इटारसी, मध्य प्रदेश
+              <strong>{lang === "hi" ? "पता:" : "Address:"}</strong>{" "}
+              {translations.address[lang]}
             </p>
           </div>
-          
+
           <div>
-            <h3 className="text-lg font-bold mb-4">त्वरित लिंक</h3>
+            <h3 className="text-lg font-bold mb-4">{translations.quickLinks[lang]}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/" className="text-gray-600 hover:text-primary">
-                  होम
+                  {translations.home[lang]}
                 </Link>
               </li>
               <li>
                 <Link to="/products" className="text-gray-600 hover:text-primary">
-                  सभी दवाइयां
+                  {translations.allMedicines[lang]}
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="text-gray-600 hover:text-primary">
-                  हमारे बारे में
+                  {translations.about[lang]}
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-gray-600 hover:text-primary">
-                  संपर्क
+                  {translations.contact[lang]}
                 </Link>
               </li>
             </ul>
           </div>
-          
+
           <div>
-            <h3 className="text-lg font-bold mb-4">संपर्क करें</h3>
+            <h3 className="text-lg font-bold mb-4">{translations.contact[lang]}</h3>
             <ul className="space-y-2">
               <li className="flex items-center gap-2 text-gray-600">
+                {/* Phone */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -61,6 +68,7 @@ const Footer = () => {
                 <span>+91 9876543210</span>
               </li>
               <li className="flex items-center gap-2 text-gray-600">
+                {/* Email */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -77,6 +85,7 @@ const Footer = () => {
                 <span>contact@bhagwatimedical.com</span>
               </li>
               <li className="flex items-center gap-2 text-gray-600">
+                {/* Location */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -90,14 +99,18 @@ const Footer = () => {
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <span>इटारसी, मध्य प्रदेश, भारत</span>
+                <span>
+                  {lang === "hi"
+                    ? "इटारसी, मध्य प्रदेश, भारत"
+                    : "Itarsi, Madhya Pradesh, India"}
+                </span>
               </li>
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t mt-8 pt-6 text-center text-gray-600">
-          <p>© 2023 भगवती मेडिकल स्टोर. सर्वाधिकार सुरक्षित.</p>
+          <p>{translations.copyright[lang]}</p>
         </div>
       </div>
     </footer>
