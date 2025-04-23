@@ -1,0 +1,46 @@
+
+import { useLanguage } from "@/context/LanguageContext";
+import ProductCard from "./ProductCard";
+
+interface Product {
+  id: number;
+  name: string;
+  imageUrl: string;
+  price: number;
+  description: string;
+  category: string;
+}
+
+interface ProductsListProps {
+  products: Product[];
+}
+
+export function ProductsList({ products }: ProductsListProps) {
+  const { t } = useLanguage();
+
+  if (products.length === 0) {
+    return (
+      <div className="text-center py-10">
+        <h3 className="text-lg font-medium mb-2">{t("noResults")}</h3>
+        <p className="text-gray-600">{t("adjustSearch")}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {products.map((product) => (
+        <ProductCard
+          key={product.id}
+          id={product.id.toString()}
+          name={product.name}
+          description={product.description}
+          price={product.price}
+          imageUrl={product.imageUrl}
+          category={product.category}
+          stock={1}
+        />
+      ))}
+    </div>
+  );
+}

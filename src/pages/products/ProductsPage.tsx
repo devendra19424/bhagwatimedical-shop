@@ -1,29 +1,23 @@
-
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Link } from "react-router-dom";
-import { ShoppingCart, Search, SlidersHorizontal } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
+import { ProductsHeader } from "@/components/products/ProductsHeader";
+import { CategoryFilter } from "@/components/products/CategoryFilter";
+import { ProductsList } from "@/components/products/ProductsList";
+import { useLanguage } from "@/context/LanguageContext";
+
+// Categories for filtering (kept in the main file as it's configuration)
+const categories = [
+  { id: "all", name: "सभी श्रेणियां" },
+  { id: "pain-killers", name: "पेन किलर" },
+  { id: "fever", name: "बुखार दवाइयां" },
+  { id: "vitamins", name: "विटामिन्स" },
+  { id: "devices", name: "स्वास्थ्य उपकरण" },
+  { id: "skincare", name: "स्किन केयर" },
+  { id: "diabetes", name: "डायबिटीज" },
+  { id: "heart", name: "हृदय स्वास्थ्य" },
+  { id: "nutrition", name: "पोषण" },
+];
 
 // Sample product data
 const products = [
@@ -93,19 +87,6 @@ const products = [
   },
 ];
 
-// Categories for filtering
-const categories = [
-  { id: "all", name: "सभी श्रेणियां" },
-  { id: "pain-killers", name: "पेन किलर" },
-  { id: "fever", name: "बुखार दवाइयां" },
-  { id: "vitamins", name: "विटामिन्स" },
-  { id: "devices", name: "स्वास्थ्य उपकरण" },
-  { id: "skincare", name: "स्किन केयर" },
-  { id: "diabetes", name: "डायबिटीज" },
-  { id: "heart", name: "हृदय स्वास्थ्य" },
-  { id: "nutrition", name: "पोषण" },
-];
-
 const ProductsPage = () => {
   const [searchParams] = useSearchParams();
   const categoryParam = searchParams.get("category");
@@ -143,124 +124,20 @@ const ProductsPage = () => {
   return (
     <Layout>
       <div className="container py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
-          <h1 className="text-2xl md:text-3xl font-bold">हमारे उत्पाद</h1>
-          
-          <div className="flex items-center gap-2 w-full md:w-auto">
-            <div className="relative flex-grow md:w-64">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-400" />
-              <Input
-                type="search"
-                placeholder="खोजें..."
-                className="pl-8"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-            
-            <Select value={sortOption} onValueChange={setSortOption}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="क्रमबद्ध करें" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="featured">फीचर्ड</SelectItem>
-                <SelectItem value="price-low">कम से ज्यादा दाम</SelectItem>
-                <SelectItem value="price-high">ज्यादा से कम दाम</SelectItem>
-                <SelectItem value="name-asc">नाम (A-Z)</SelectItem>
-                <SelectItem value="name-desc">नाम (Z-A)</SelectItem>
-              </SelectContent>
-            </Select>
-            
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <SlidersHorizontal className="h-4 w-4" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent>
-                <SheetHeader>
-                  <SheetTitle>श्रेणियां</SheetTitle>
-                  <SheetDescription>
-                    अपनी पसंद की श्रेणी चुनें।
-                  </SheetDescription>
-                </SheetHeader>
-                <div className="py-4 space-y-4">
-                  {categories.map((category) => (
-                    <div key={category.id} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={`category-${category.id}`}
-                        checked={selectedCategory === category.id}
-                        onCheckedChange={() => setSelectedCategory(category.id)}
-                      />
-                      <Label htmlFor={`category-${category.id}`}>
-                        {category.name}
-                      </Label>
-                    </div>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </div>
+        <ProductsHeader
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          sortOption={sortOption}
+          setSortOption={setSortOption}
+        />
         
-        {/* Category Pills */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {categories.map((category) => (
-            <Button
-              key={category.id}
-              variant={selectedCategory === category.id ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedCategory(category.id)}
-            >
-              {category.name}
-            </Button>
-          ))}
-        </div>
+        <CategoryFilter
+          categories={categories}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
         
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {sortedProducts.map((product) => (
-            <Card key={product.id} className="overflow-hidden">
-              <Link to={`/products/${product.id}`}>
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={product.imageUrl}
-                    alt={product.name}
-                    className="object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
-                  />
-                  <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs py-1 px-2 rounded">
-                    {product.category}
-                  </div>
-                </div>
-              </Link>
-              <CardContent className="p-4">
-                <Link to={`/products/${product.id}`}>
-                  <h3 className="font-semibold text-lg mb-1">{product.name}</h3>
-                </Link>
-                <p className="text-gray-600 text-sm line-clamp-2 mb-2">
-                  {product.description}
-                </p>
-                <p className="font-bold">
-                  ₹{product.price.toFixed(2)}
-                </p>
-              </CardContent>
-              <CardFooter className="p-4 pt-0">
-                <Button className="w-full gap-2">
-                  <ShoppingCart className="h-4 w-4" />
-                  कार्ट में जोड़ें
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-        
-        {/* Empty State */}
-        {sortedProducts.length === 0 && (
-          <div className="text-center py-10">
-            <h3 className="text-lg font-medium mb-2">कोई परिणाम नहीं मिला</h3>
-            <p className="text-gray-600">अपनी खोज को समायोजित करके दोबारा प्रयास करें।</p>
-          </div>
-        )}
+        <ProductsList products={sortedProducts} />
       </div>
     </Layout>
   );
