@@ -1,35 +1,38 @@
 
 import { Truck, Clock, MapPin, Shield } from "lucide-react";
-
-const features = [
-  {
-    icon: <Truck className="h-10 w-10 text-primary" />,
-    title: "तीव्र डिलीवरी",
-    description: "इटारसी शहर में 60 मिनट से भी कम समय में दवाइयां आपके घर तक पहुंचाते हैं।",
-  },
-  {
-    icon: <Clock className="h-10 w-10 text-primary" />,
-    title: "24x7 सेवा",
-    description: "आपात स्थितियों में भी हम 24 घंटे आपकी सेवा में हैं।",
-  },
-  {
-    icon: <MapPin className="h-10 w-10 text-primary" />,
-    title: "डिलीवरी ट्रैकिंग",
-    description: "रियल-टाइम में अपने ऑर्डर को ट्रैक करें और जानें कि वह कहां है।",
-  },
-  {
-    icon: <Shield className="h-10 w-10 text-primary" />,
-    title: "असली दवाइयां",
-    description: "हम केवल प्रमाणित और गुणवत्तापूर्ण दवाइयां ही डिलीवर करते हैं।",
-  },
-];
+import { useLanguage, translations } from "@/context/LanguageContext";
 
 const DeliveryInfo = () => {
+  const { lang } = useLanguage();
+
+  const features = [
+    {
+      icon: <Truck className="h-10 w-10 text-primary" />,
+      title: translations.fastDelivery[lang],
+      description: translations.fastDeliveryDesc[lang],
+    },
+    {
+      icon: <Clock className="h-10 w-10 text-primary" />,
+      title: translations.service24x7[lang],
+      description: translations.service24x7Desc[lang],
+    },
+    {
+      icon: <MapPin className="h-10 w-10 text-primary" />,
+      title: translations.trackDelivery[lang],
+      description: translations.trackDeliveryDesc[lang],
+    },
+    {
+      icon: <Shield className="h-10 w-10 text-primary" />,
+      title: translations.genuineMeds[lang],
+      description: translations.genuineMedsDesc[lang],
+    },
+  ];
+
   return (
     <section className="py-12 bg-gradient-to-b from-white to-gray-50">
       <div className="container px-4 md:px-6">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
-          क्यों चुनें हमारी डिलीवरी सेवा?
+          {translations.whyChooseUs[lang]}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (

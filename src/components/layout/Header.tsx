@@ -1,5 +1,5 @@
 
-import { ShoppingCart, User, Languages } from "lucide-react";
+import { ShoppingCart, User, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,7 +10,7 @@ const Header = () => {
   const { lang, toggleLanguage } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur shadow-sm">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center gap-2">
@@ -41,14 +41,16 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="flex items-center">
-            <Languages className="h-5 w-5 mr-2" />
+          <div className="flex items-center gap-2 border rounded-full px-3 py-1">
+            <Globe className="h-4 w-4 text-primary" />
             <Switch
               checked={lang === "hi"}
               onCheckedChange={toggleLanguage}
               aria-label="Toggle Language"
             />
-            <span className="ml-2 text-xs">{lang === "hi" ? "हिन्दी" : "English"}</span>
+            <span className="text-xs font-medium">
+              {lang === "hi" ? translations.switchToEnglish[lang] : translations.switchToHindi[lang]}
+            </span>
           </div>
 
           <Link to="/cart">
