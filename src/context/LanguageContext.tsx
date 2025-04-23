@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 type Language = "en" | "hi";
@@ -10,7 +9,6 @@ interface Translations {
   };
 }
 
-// Label mapping for Header, Footer, etc. Add as needed!
 export const translations: Translations = {
   storeName: {
     en: "Bhagwati Medical Store",
@@ -72,7 +70,6 @@ export const translations: Translations = {
     en: "© 2023 Bhagwati Medical Store. All rights reserved.",
     hi: "© 2023 भगवती मेडिकल स्टोर. सर्वाधिकार सुरक्षित.",
   },
-  // Hero section translations
   heroTitle: {
     en: "Your Health, Our Responsibility",
     hi: "आपकी स्वास्थ्य सेवा, हमारा उत्तरदायित्व",
@@ -89,7 +86,6 @@ export const translations: Translations = {
     en: "Create Account",
     hi: "अकाउंट बनाएं",
   },
-  // Category section translations
   categories: {
     en: "Categories",
     hi: "श्रेणियां",
@@ -118,7 +114,6 @@ export const translations: Translations = {
     en: "Diabetes",
     hi: "डायबिटीज",
   },
-  // Delivery section translations
   whyChooseUs: {
     en: "Why Choose Our Delivery Service?",
     hi: "क्यों चुनें हमारी डिलीवरी सेवा?",
@@ -163,16 +158,43 @@ export const translations: Translations = {
     en: "Hindi",
     hi: "हिन्दी",
   },
+  addToCart: {
+    en: "Add to Cart",
+    hi: "कार्ट में जोड़ें",
+  },
+  outOfStock: {
+    en: "Out of Stock",
+    hi: "स्टॉक में नहीं है",
+  },
+  priceRange: {
+    en: "Price Range",
+    hi: "मूल्य सीमा",
+  },
+  sortBy: {
+    en: "Sort By",
+    hi: "क्रमबद्ध करें",
+  },
+  filters: {
+    en: "Filters",
+    hi: "फ़िल्टर",
+  },
+  searchProducts: {
+    en: "Search products...",
+    hi: "उत्पाद खोजें...",
+  },
+  noResults: {
+    en: "No products found",
+    hi: "कोई उत्पाद नहीं मिला",
+  },
 };
 
 interface LanguageContextType {
   lang: Language;
   toggleLanguage: () => void;
+  t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
-);
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
@@ -181,11 +203,20 @@ export const useLanguage = () => {
 };
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<Language>("hi"); // Default to Hindi
-  const toggleLanguage = () =>
-    setLang((prev) => (prev === "en" ? "hi" : "en"));
+  const [lang, setLang] = useState<Language>("hi");
+
+  const toggleLanguage = () => setLang((prev) => (prev === "en" ? "hi" : "en"));
+
+  const t = (key: string): string => {
+    if (!translations[key]) {
+      console.warn(`Translation missing for key: ${key}`);
+      return key;
+    }
+    return translations[key][lang];
+  };
+
   return (
-    <LanguageContext.Provider value={{ lang, toggleLanguage }}>
+    <LanguageContext.Provider value={{ lang, toggleLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

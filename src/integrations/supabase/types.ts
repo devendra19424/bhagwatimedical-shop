@@ -9,7 +9,155 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      order_items: {
+        Row: {
+          created_at: string
+          id: string
+          order_id: string
+          price_at_time: number
+          product_id: string
+          quantity: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          order_id: string
+          price_at_time: number
+          product_id: string
+          quantity: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          order_id?: string
+          price_at_time?: number
+          product_id?: string
+          quantity?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "order_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          created_at: string
+          id: string
+          razorpay_order_id: string | null
+          razorpay_payment_id: string | null
+          status: string
+          total_amount: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          razorpay_order_id?: string | null
+          razorpay_payment_id?: string | null
+          status?: string
+          total_amount: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          razorpay_order_id?: string | null
+          razorpay_payment_id?: string | null
+          status?: string
+          total_amount?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      product_categories: {
+        Row: {
+          created_at: string
+          id: string
+          name_en: string
+          name_hi: string
+          slug: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name_en: string
+          name_hi: string
+          slug: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name_en?: string
+          name_hi?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          category_id: string
+          created_at: string
+          description_en: string | null
+          description_hi: string | null
+          id: string
+          image_url: string | null
+          name_en: string
+          name_hi: string
+          price: number
+          stock: number
+          updated_at: string
+        }
+        Insert: {
+          category_id: string
+          created_at?: string
+          description_en?: string | null
+          description_hi?: string | null
+          id?: string
+          image_url?: string | null
+          name_en: string
+          name_hi: string
+          price: number
+          stock?: number
+          updated_at?: string
+        }
+        Update: {
+          category_id?: string
+          created_at?: string
+          description_en?: string | null
+          description_hi?: string | null
+          id?: string
+          image_url?: string | null
+          name_en?: string
+          name_hi?: string
+          price?: number
+          stock?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "product_categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -18,7 +166,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      supported_language: "en" | "hi"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -133,6 +281,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      supported_language: ["en", "hi"],
+    },
   },
 } as const
