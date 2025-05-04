@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
-import { useLanguage, translations } from "@/context/LanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations";
 
 const Footer = () => {
   const { lang } = useLanguage();

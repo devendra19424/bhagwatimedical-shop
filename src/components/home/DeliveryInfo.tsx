@@ -1,6 +1,7 @@
 
 import { Truck, Clock, MapPin, Shield } from "lucide-react";
-import { useLanguage, translations } from "@/context/LanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations";
 
 const DeliveryInfo = () => {
   const { lang } = useLanguage();

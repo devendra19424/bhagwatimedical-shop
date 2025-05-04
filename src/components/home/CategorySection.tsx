@@ -1,7 +1,8 @@
 
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
-import { useLanguage, translations } from "@/context/LanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations";
 
 const CategorySection = () => {
   const { lang } = useLanguage();

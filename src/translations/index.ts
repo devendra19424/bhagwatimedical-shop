@@ -27,4 +27,3 @@ export interface TranslationType {
     hi: string;
   };
 }
-

@@ -24,5 +24,16 @@ export const deliveryTranslations = {
     en: "Track your order in real-time and know where it is.",
     hi: "रियल-टाइम में अपने ऑर्डर को ट्रैक करें और जानें कि वह कहां है।",
   },
+  genuineMeds: {
+    en: "Genuine Medicines",
+    hi: "असली दवाइयां",
+  },
+  genuineMedsDesc: {
+    en: "We source all medicines directly from manufacturers.",
+    hi: "हम सभी दवाइयां सीधे निर्माताओं से प्राप्त करते हैं।",
+  },
+  whyChooseUs: {
+    en: "Why Choose Our Delivery Service?",
+    hi: "क्यों चुनें हमारी डिलीवरी सेवा?",
+  },
 };
-
