@@ -51,6 +51,13 @@ const CategorySection = () => {
       link: "/products?category=diabetes",
       image: productImages.glucometer.image
     },
+    {
+      id: 7,
+      name: t("heartHealth"),
+      icon: "❤️",
+      link: "/products?category=heart",
+      image: productImages.heartHealth.image
+    }
   ];
 
   return (
@@ -59,7 +66,7 @@ const CategorySection = () => {
         <h2 className="text-xl md:text-3xl font-bold text-center mb-6 md:mb-8">
           {t("categories")}
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 md:gap-4">
           {categories.map((category) => (
             <Link key={category.id} to={category.link}>
               <Card className="border-none h-full shadow-sm hover:shadow-md transition-shadow duration-200">

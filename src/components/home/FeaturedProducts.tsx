@@ -21,7 +21,7 @@ const generateFeaturedProducts = (lang: Language) => [
   {
     id: 2,
     name: lang === "en" ? "Multivitamin" : "मल्टीविटामिन",
-    imageUrl: productImages.vitamins ? productImages.vitamins.image : productImages.skinCare.image,
+    imageUrl: productImages.vitamins.image,
     price: 299.99,
     description: lang === "en" ? "Daily nutritional supplement" : "दैनिक पोषण सप्लीमेंट",
     category: lang === "en" ? "Vitamins" : "विटामिन्स",
@@ -29,7 +29,7 @@ const generateFeaturedProducts = (lang: Language) => [
   {
     id: 3,
     name: lang === "en" ? "Digital Thermometer" : "डिजिटल थर्मामीटर",
-    imageUrl: productImages.feverMedicines.image,
+    imageUrl: productImages.thermometer.image,
     price: 399.99,
     description: lang === "en" ? "Quick and accurate temperature measurement" : "त्वरित और सटीक तापमान माप",
     category: lang === "en" ? "Health Devices" : "स्वास्थ्य उपकरण",

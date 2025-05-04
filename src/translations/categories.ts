@@ -28,5 +28,8 @@ export const categoryTranslations = {
     en: "Diabetes",
     hi: "डायबिटीज",
   },
+  heartHealth: {
+    en: "Heart Health",
+    hi: "हृदय स्वास्थ्य",
+  },
 };
-

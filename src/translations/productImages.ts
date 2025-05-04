@@ -55,5 +55,19 @@ export const productImages = {
       hi: "विटामिन्स"
     },
     image: "https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&auto=format&fit=crop&w=800&h=600"
+  },
+  thermometer: {
+    name: {
+      en: "Digital Thermometer",
+      hi: "डिजिटल थर्मामीटर"
+    },
+    image: "https://images.unsplash.com/photo-1588952159215-a4b39193464e?q=80&auto=format&fit=crop&w=800&h=600"
+  },
+  heartHealth: {
+    name: {
+      en: "Heart Health",
+      hi: "हृदय स्वास्थ्य"
+    },
+    image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&auto=format&fit=crop&w=800&h=600"
   }
 };
