@@ -4,54 +4,59 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ShoppingCart } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { productImages } from "@/translations";
+import { Language } from "@/translations";
 
-// Sample product data
-const featuredProducts = [
+// Sample product data with images from productImages
+const generateFeaturedProducts = (lang: Language) => [
   {
     id: 1,
-    name: "पैरासिटामोल",
-    imageUrl: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    name: lang === "en" ? "Paracetamol" : "पैरासिटामोल",
+    imageUrl: productImages.painKillers.image,
     price: 25.99,
-    description: "बुखार और दर्द निवारक टैबलेट",
-    category: "पेन किलर",
+    description: lang === "en" ? "Fever and pain relief tablets" : "बुखार और दर्द निवारक टैबलेट",
+    category: lang === "en" ? "Pain Killers" : "पेन किलर",
   },
   {
     id: 2,
-    name: "मल्टीविटामिन",
-    imageUrl: "https://images.unsplash.com/photo-1550572017-edd951b55104?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    name: lang === "en" ? "Multivitamin" : "मल्टीविटामिन",
+    imageUrl: productImages.vitamins ? productImages.vitamins.image : productImages.skinCare.image,
     price: 299.99,
-    description: "दैनिक पोषण सप्लीमेंट",
-    category: "विटामिन्स",
+    description: lang === "en" ? "Daily nutritional supplement" : "दैनिक पोषण सप्लीमेंट",
+    category: lang === "en" ? "Vitamins" : "विटामिन्स",
   },
   {
     id: 3,
-    name: "डिजिटल थर्मामीटर",
-    imageUrl: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    name: lang === "en" ? "Digital Thermometer" : "डिजिटल थर्मामीटर",
+    imageUrl: productImages.feverMedicines.image,
     price: 399.99,
-    description: "त्वरित और सटीक तापमान माप",
-    category: "स्वास्थ्य उपकरण",
+    description: lang === "en" ? "Quick and accurate temperature measurement" : "त्वरित और सटीक तापमान माप",
+    category: lang === "en" ? "Health Devices" : "स्वास्थ्य उपकरण",
   },
   {
     id: 4,
-    name: "हैंड सैनिटाइज़र",
-    imageUrl: "https://images.unsplash.com/photo-1584362522949-b6394e1eaa4b?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    name: lang === "en" ? "Hand Sanitizer" : "हैंड सैनिटाइज़र",
+    imageUrl: productImages.handSanitizer.image,
     price: 149.99,
-    description: "99.9% जीवाणु नाशक",
-    category: "स्किन केयर",
+    description: lang === "en" ? "99.9% germ kill" : "99.9% जीवाणु नाशक",
+    category: lang === "en" ? "Skin Care" : "स्किन केयर",
   },
 ];
 
 const FeaturedProducts = () => {
+  const { lang, t } = useLanguage();
   const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
+  const featuredProducts = generateFeaturedProducts(lang);
 
   return (
     <section className="py-12">
       <div className="container px-4 md:px-6">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold">विशेष उत्पाद</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">{t("featured")}</h2>
           <Link to="/products">
             <Button variant="link" className="text-primary">
-              सभी देखें
+              {t("allProducts")}
             </Button>
           </Link>
         </div>
@@ -89,7 +94,7 @@ const FeaturedProducts = () => {
               <CardFooter className="p-4 pt-0">
                 <Button className="w-full gap-2">
                   <ShoppingCart className="h-4 w-4" />
-                  कार्ट में जोड़ें
+                  {t("addToCart")}
                 </Button>
               </CardFooter>
             </Card>

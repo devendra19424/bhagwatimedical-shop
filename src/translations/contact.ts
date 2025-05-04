@@ -20,8 +20,24 @@ export const contactTranslations = {
     en: "+91 9516271348",
     hi: "+९१ ९५१६२७१३४८",
   },
+  phoneNumber: {
+    en: "9516271348",
+    hi: "९५१६२७१३४८",
+  },
   emailAddress: {
     en: "shubh18237@gmail.com",
     hi: "shubh18237@gmail.com",
-  }
+  },
+  phoneLink: {
+    en: "tel:+919516271348",
+    hi: "tel:+919516271348",
+  },
+  emailLink: {
+    en: "mailto:shubh18237@gmail.com",
+    hi: "mailto:shubh18237@gmail.com",
+  },
+  mapsLink: {
+    en: "https://maps.google.com/?q=Bhagwati+Medical+Store+Main+Road+Old+Itarsi+Near+Bajaj+Showroom",
+    hi: "https://maps.google.com/?q=Bhagwati+Medical+Store+Main+Road+Old+Itarsi+Near+Bajaj+Showroom",
+  },
 };

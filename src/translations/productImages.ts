@@ -48,5 +48,12 @@ export const productImages = {
       hi: "त्वचा की देखभाल"
     },
     image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&auto=format&fit=crop"
+  },
+  vitamins: {
+    name: {
+      en: "Vitamins",
+      hi: "विटामिन्स"
+    },
+    image: "https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&auto=format&fit=crop"
   }
 };
