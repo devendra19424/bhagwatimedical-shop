@@ -9,6 +9,7 @@ interface Product {
   price: number;
   description: string;
   category: string;
+  stock: number;
 }
 
 interface ProductsListProps {
@@ -20,15 +21,15 @@ export function ProductsList({ products }: ProductsListProps) {
 
   if (products.length === 0) {
     return (
-      <div className="text-center py-10">
+      <div className="text-center py-8 md:py-10 px-4">
         <h3 className="text-lg font-medium mb-2">{t("noResults")}</h3>
-        <p className="text-gray-600">{t("adjustSearch")}</p>
+        <p className="text-gray-600 text-sm md:text-base">{t("adjustSearch")}</p>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
       {products.map((product) => (
         <ProductCard
           key={product.id}
@@ -38,7 +39,7 @@ export function ProductsList({ products }: ProductsListProps) {
           price={product.price}
           imageUrl={product.imageUrl}
           category={product.category}
-          stock={1}
+          stock={product.stock}
         />
       ))}
     </div>

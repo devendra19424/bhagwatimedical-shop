@@ -1,11 +1,12 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { ProductsHeader } from "@/components/products/ProductsHeader";
 import { CategoryFilter } from "@/components/products/CategoryFilter";
 import { ProductsList } from "@/components/products/ProductsList";
 import { useLanguage } from "@/context/LanguageContext";
+import { productImages } from "@/translations";
 
 // Updated categories with both language versions
 const categories = [
@@ -20,93 +21,125 @@ const categories = [
   { id: "nutrition", name_en: "Nutrition", name_hi: "पोषण" },
 ];
 
-// Updated product data with both language versions
-const products = [
+// Updated product data with proper images and category mapping
+const generateProducts = () => [
   {
     id: 1,
     name_en: "Paracetamol",
     name_hi: "पैरासिटामोल",
-    imageUrl: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    imageUrl: productImages.painKillers.image,
     price: 25.99,
     description_en: "Fever and pain relief tablets",
     description_hi: "बुखार और दर्द निवारक टैबलेट",
+    category_id: "pain-killers",
     category_en: "Pain Killers",
     category_hi: "पेन किलर",
   },
   {
     id: 2,
+    name_en: "Ibuprofen",
+    name_hi: "इबुप्रोफेन",
+    imageUrl: productImages.painKillers.image,
+    price: 35.99,
+    description_en: "Anti-inflammatory pain reliever",
+    description_hi: "सूजन कम करने वाला दर्द निवारक",
+    category_id: "pain-killers",
+    category_en: "Pain Killers",
+    category_hi: "पेन किलर",
+  },
+  {
+    id: 3,
     name_en: "Multivitamin",
     name_hi: "मल्टीविटामिन",
-    imageUrl: "https://images.unsplash.com/photo-1550572017-edd951b55104?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    imageUrl: productImages.vitamins.image,
     price: 299.99,
     description_en: "Daily nutritional supplement",
     description_hi: "दैनिक पोषण सप्लीमेंट",
+    category_id: "vitamins",
     category_en: "Vitamins",
     category_hi: "विटामिन्स",
   },
   {
-    id: 3,
+    id: 4,
     name_en: "Digital Thermometer",
     name_hi: "डिजिटल थर्मामीटर",
-    imageUrl: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    imageUrl: productImages.feverMedicines.image,
     price: 399.99,
     description_en: "Quick and accurate temperature measurement",
     description_hi: "त्वरित और सटीक तापमान माप",
-    category_en: "Health Devices",
-    category_hi: "स्वास्थ्य उपकरण",
+    category_id: "fever",
+    category_en: "Fever Medicines",
+    category_hi: "बुखार दवाइयां",
   },
   {
-    id: 4,
+    id: 5,
     name_en: "Hand Sanitizer",
     name_hi: "हैंड सैनिटाइज़र",
-    imageUrl: "https://images.unsplash.com/photo-1584362522949-b6394e1eaa4b?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    imageUrl: productImages.handSanitizer.image,
     price: 149.99,
     description_en: "99.9% germ kill",
     description_hi: "99.9% जीवाणु नाशक",
+    category_id: "skincare",
     category_en: "Skin Care",
     category_hi: "स्किन केयर",
   },
   {
-    id: 5,
+    id: 6,
     name_en: "Cough Syrup",
     name_hi: "कफ सिरप",
-    imageUrl: "https://images.unsplash.com/photo-1603807008857-ad66b70431e2?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    imageUrl: productImages.coughSyrup.image,
     price: 99.99,
     description_en: "Cough relief syrup",
     description_hi: "खांसी निवारक सिरप",
-    category_en: "Cough & Cold",
-    category_hi: "कफ और सर्दी",
+    category_id: "fever",
+    category_en: "Fever Medicines",
+    category_hi: "बुखार दवाइयां",
   },
   {
-    id: 6,
+    id: 7,
+    name_en: "Face Cream",
+    name_hi: "फेस क्रीम",
+    imageUrl: productImages.skinCare.image,
+    price: 199.99,
+    description_en: "Moisturizing face cream",
+    description_hi: "मॉइस्चराइजिंग फेस क्रीम",
+    category_id: "skincare",
+    category_en: "Skin Care",
+    category_hi: "स्किन केयर",
+  },
+  {
+    id: 8,
     name_en: "Glucometer",
     name_hi: "ग्लूकोमीटर",
-    imageUrl: "https://images.unsplash.com/photo-1612277627603-ab936df4d50d?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    imageUrl: productImages.glucometer.image,
     price: 1299.99,
     description_en: "Sugar level monitoring system",
     description_hi: "शुगर लेवल मॉनिटरिंग सिस्टम",
+    category_id: "diabetes",
     category_en: "Diabetes",
     category_hi: "डायबिटीज",
   },
   {
-    id: 7,
+    id: 9,
     name_en: "BP Monitor",
     name_hi: "बीपी मॉनिटर",
-    imageUrl: "https://images.unsplash.com/photo-1580281657702-257584239a58?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    imageUrl: productImages.bpMonitor.image,
     price: 1499.99,
     description_en: "Digital blood pressure monitor",
     description_hi: "डिजिटल ब्लड प्रेशर मॉनिटर",
-    category_en: "Heart Health",
-    category_hi: "हृदय स्वास्थ्य",
+    category_id: "devices",
+    category_en: "Health Devices",
+    category_hi: "स्वास्थ्य उपकरण",
   },
   {
-    id: 8,
+    id: 10,
     name_en: "Protein Powder",
     name_hi: "प्रोटीन पाउडर",
-    imageUrl: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    imageUrl: productImages.vitamins.image,
     price: 999.99,
     description_en: "Pure whey protein",
     description_hi: "शुद्ध व्हे प्रोटीन",
+    category_id: "nutrition",
     category_en: "Nutrition",
     category_hi: "पोषण",
   },
@@ -119,8 +152,16 @@ const ProductsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>(categoryParam || "all");
   const [sortOption, setSortOption] = useState("featured");
+  const [products, setProducts] = useState(generateProducts());
   
   const { lang } = useLanguage();
+  
+  // Update category when URL parameter changes
+  useEffect(() => {
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [categoryParam]);
   
   // Map categories to display correct language version
   const localizedCategories = categories.map(category => ({
@@ -132,13 +173,12 @@ const ProductsPage = () => {
   const filteredProducts = products.filter((product) => {
     const productName = product[`name_${lang}`] as string;
     const productDescription = product[`description_${lang}`] as string;
-    const productCategory = product[`category_${lang}`] as string;
     
     const matchesSearch = productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           productDescription.toLowerCase().includes(searchQuery.toLowerCase());
     
     const matchesCategory = selectedCategory === "all" || 
-                           productCategory.toLowerCase().includes(selectedCategory.toLowerCase());
+                           product.category_id === selectedCategory;
     
     return matchesSearch && matchesCategory;
   });
@@ -169,12 +209,12 @@ const ProductsPage = () => {
     price: product.price,
     description: product[`description_${lang}`] as string,
     category: product[`category_${lang}`] as string,
-    stock: 1
+    stock: 10
   }));
 
   return (
     <Layout>
-      <div className="container py-8">
+      <div className="container py-4 md:py-8 px-4 md:px-6 mx-auto">
         <ProductsHeader
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}

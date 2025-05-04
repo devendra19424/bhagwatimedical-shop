@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/context/LanguageContext";
 import { productImages } from "@/translations";
+import { Language } from "@/translations";
 
 const CategorySection = () => {
   const { lang, t } = useLanguage();
@@ -53,20 +54,20 @@ const CategorySection = () => {
   ];
 
   return (
-    <section className="py-12 bg-gray-50">
-      <div className="container px-4 md:px-6">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+    <section className="py-8 md:py-12 bg-gray-50">
+      <div className="container px-4 md:px-6 mx-auto">
+        <h2 className="text-xl md:text-3xl font-bold text-center mb-6 md:mb-8">
           {t("categories")}
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
           {categories.map((category) => (
             <Link key={category.id} to={category.link}>
-              <Card className="border-none shadow-sm hover:shadow-md transition-shadow duration-200">
-                <CardContent className="flex flex-col items-center justify-center p-6">
-                  <div className="h-12 w-12 mb-4 rounded-full bg-primary/10 flex items-center justify-center text-3xl">
+              <Card className="border-none h-full shadow-sm hover:shadow-md transition-shadow duration-200">
+                <CardContent className="flex flex-col items-center justify-center p-3 md:p-6">
+                  <div className="h-10 w-10 md:h-12 md:w-12 mb-3 md:mb-4 rounded-full bg-primary/10 flex items-center justify-center text-2xl md:text-3xl">
                     {category.icon}
                   </div>
-                  <span className="text-center font-medium">{category.name}</span>
+                  <span className="text-center text-sm md:text-base font-medium">{category.name}</span>
                 </CardContent>
               </Card>
             </Link>

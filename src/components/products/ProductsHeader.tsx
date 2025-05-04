@@ -26,23 +26,23 @@ export function ProductsHeader({
   const { t } = useLanguage();
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
-      <h1 className="text-2xl md:text-3xl font-bold">{t("ourProducts")}</h1>
+    <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-8 gap-3 md:gap-4">
+      <h1 className="text-xl md:text-3xl font-bold text-center md:text-left w-full md:w-auto">{t("ourProducts")}</h1>
       
-      <div className="flex items-center gap-2 w-full md:w-auto">
-        <div className="relative flex-grow md:w-64">
+      <div className="flex flex-col sm:flex-row items-center gap-2 w-full md:w-auto">
+        <div className="relative flex-grow w-full sm:w-auto">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-400" />
           <Input
             type="search"
             placeholder={t("searchProducts")}
-            className="pl-8"
+            className="pl-8 text-sm h-9 md:h-10 w-full"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
         
         <Select value={sortOption} onValueChange={setSortOption}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full sm:w-[180px] h-9 md:h-10 text-sm">
             <SelectValue placeholder={t("sortBy")} />
           </SelectTrigger>
           <SelectContent>
