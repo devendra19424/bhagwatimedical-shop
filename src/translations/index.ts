@@ -7,6 +7,7 @@ import { homeTranslations } from "./home";
 import { deliveryTranslations } from "./delivery";
 import { contactTranslations } from "./contact";
 import { languageTranslations } from "./language";
+import { productImages } from "./productImages";
 
 export const translations = {
   ...commonTranslations,
@@ -18,6 +19,8 @@ export const translations = {
   ...contactTranslations,
   ...languageTranslations,
 };
+
+export { productImages };
 
 export type Language = "en" | "hi";
 

@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/translations";
+import { contactTranslations } from "@/translations/contact";
 
 const Footer = () => {
   const { lang } = useLanguage();
@@ -53,7 +54,6 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4">{translations.contact[lang]}</h3>
             <ul className="space-y-2">
               <li className="flex items-center gap-2 text-gray-600">
-                {/* Phone */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -66,10 +66,11 @@ const Footer = () => {
                 >
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                <span>+91 9876543210</span>
+                <a href="tel:+919516271348" className="hover:text-primary">
+                  +91 9516271348
+                </a>
               </li>
               <li className="flex items-center gap-2 text-gray-600">
-                {/* Email */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -83,10 +84,11 @@ const Footer = () => {
                   <rect width="20" height="16" x="2" y="4" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
-                <span>contact@bhagwatimedical.com</span>
+                <a href="mailto:shubh18237@gmail.com" className="hover:text-primary">
+                  shubh18237@gmail.com
+                </a>
               </li>
               <li className="flex items-center gap-2 text-gray-600">
-                {/* Location */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -100,11 +102,16 @@ const Footer = () => {
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <span>
+                <a 
+                  href="https://maps.google.com/?q=Bhagwati+Medical+Store+Main+Road+Old+Itarsi+Near+Bajaj+Showroom" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-primary"
+                >
                   {lang === "hi"
-                    ? "इटारसी, मध्य प्रदेश, भारत"
-                    : "Itarsi, Madhya Pradesh, India"}
-                </span>
+                    ? "भगवती मेडिकल स्टोर, मेन रोड, पुराना इटारसी, बजाज शोरूम के पास"
+                    : "Bhagwati Medical Store, Main Road, Old Itarsi, Near Bajaj Showroom"}
+                </a>
               </li>
             </ul>
           </div>

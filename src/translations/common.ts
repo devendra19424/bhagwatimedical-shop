@@ -9,8 +9,7 @@ export const commonTranslations = {
     hi: "© 2023 भगवती मेडिकल स्टोर. सर्वाधिकार सुरक्षित.",
   },
   address: {
-    en: "Main Market, Itarsi, Madhya Pradesh",
-    hi: "मुख्य बाज़ार, इटारसी, मध्य प्रदेश",
+    en: "Bhagwati Medical Store, Main Road, Old Itarsi, Near Bajaj Showroom",
+    hi: "भगवती मेडिकल स्टोर, मेन रोड, पुराना इटारसी, बजाज शोरूम के पास",
   },
 };
-
