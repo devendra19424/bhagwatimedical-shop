@@ -16,4 +16,8 @@ export const languageTranslations = {
     en: "All Products",
     hi: "सभी उत्पाद",
   },
+  relatedProducts: {
+    en: "Related Products", 
+    hi: "संबंधित उत्पाद",
+  }
 };

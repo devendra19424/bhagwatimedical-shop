@@ -1,5 +1,6 @@
 
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface RelatedProduct {
   id: number;
@@ -14,9 +15,11 @@ interface RelatedProductsProps {
 }
 
 export function RelatedProducts({ products }: RelatedProductsProps) {
+  const { t } = useLanguage();
+  
   return (
     <div className="border-t pt-8">
-      <h2 className="text-2xl font-bold mb-6">संबंधित उत्पाद</h2>
+      <h2 className="text-2xl font-bold mb-6">{t("relatedProducts")}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
           <Link to={`/products/${product.id}`} key={product.id}>
