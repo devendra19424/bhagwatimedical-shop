@@ -2,14 +2,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import { componentTagger } from "lovable-tagger";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
-    react({
-      // Enable fast refresh for better developer experience
-      fastRefresh: true,
-    }),
-  ],
+    react(),
+    mode === 'development' && componentTagger(),
+  ].filter(Boolean),
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -17,6 +16,7 @@ export default defineConfig({
   },
   server: {
     port: 8080,
+    host: "::",
     // Optimize for low bandwidth areas
     hmr: {
       overlay: true,
@@ -45,4 +45,4 @@ export default defineConfig({
     sourcemap: true,
   },
   base: './',
-});
+}));

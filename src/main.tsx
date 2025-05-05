@@ -26,10 +26,20 @@ root.render(<App />);
 
 // Remove unused event listeners and optimize first input delay
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    const stylesheet = document.getElementById('splash-stylesheet');
-    if (stylesheet) {
-      stylesheet.remove();
-    }
-  }, 0);
+  // Use requestIdleCallback for non-critical operations
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(() => {
+      const stylesheet = document.getElementById('splash-stylesheet');
+      if (stylesheet) {
+        stylesheet.remove();
+      }
+    });
+  } else {
+    setTimeout(() => {
+      const stylesheet = document.getElementById('splash-stylesheet');
+      if (stylesheet) {
+        stylesheet.remove();
+      }
+    }, 0);
+  }
 });

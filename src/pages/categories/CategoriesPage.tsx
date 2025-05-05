@@ -1,11 +1,10 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/layout/Layout";
 import ProductCategoryCard from "@/components/products/ProductCategoryCard";
 import { productImages } from "@/translations";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 interface Category {
   id: string;
