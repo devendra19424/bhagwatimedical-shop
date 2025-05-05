@@ -39,7 +39,7 @@ const Header = () => {
                   {t("categories")}
                 </Link>
                 <Link to="/profile" className="text-lg font-medium">
-                  {lang === "en" ? "My Account" : "मेरा अकाउंट"}
+                  {t("myAccount")}
                 </Link>
               </nav>
             </SheetContent>
@@ -112,12 +112,12 @@ const Header = () => {
             <DropdownMenuContent align="end">
               <DropdownMenuItem asChild>
                 <Link to="/login" className="w-full">
-                  {lang === "en" ? "Login" : "लॉगिन"}
+                  {t("login")}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link to="/profile" className="w-full">
-                  {lang === "en" ? "My Account" : "मेरा अकाउंट"}
+                  {t("myAccount")}
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -132,12 +132,12 @@ const Header = () => {
             <DropdownMenuContent align="end">
               <DropdownMenuItem asChild>
                 <Link to="/login" className="w-full">
-                  {lang === "en" ? "Login" : "लॉगिन"}
+                  {t("login")}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link to="/profile" className="w-full">
-                  {lang === "en" ? "My Account" : "मेरा अकाउंट"}
+                  {t("myAccount")}
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>

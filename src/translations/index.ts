@@ -10,6 +10,9 @@ import { languageTranslations } from "./language";
 import { authTranslations } from "./auth";
 import { productImages } from "./productImages";
 import { profileTranslations } from "./profile";
+import { adminTranslations } from "./admin";
+import { checkoutTranslations } from "./checkout";
+import { trackingTranslations } from "./tracking";
 
 export const translations = {
   ...commonTranslations,
@@ -22,6 +25,9 @@ export const translations = {
   ...languageTranslations,
   ...authTranslations,
   ...profileTranslations,
+  ...adminTranslations,
+  ...checkoutTranslations,
+  ...trackingTranslations,
 };
 
 export { productImages };

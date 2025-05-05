@@ -20,6 +20,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Demo data
 const recentOrders = [
@@ -28,7 +29,7 @@ const recentOrders = [
     customer: "राम शर्मा",
     date: "2023-10-10",
     total: 399.98,
-    status: "पूरा",
+    status: "completed",
     items: 3,
   },
   {
@@ -36,7 +37,7 @@ const recentOrders = [
     customer: "सीमा वर्मा",
     date: "2023-10-09",
     total: 599.97,
-    status: "चल रहा है",
+    status: "inProgress",
     items: 2,
   },
   {
@@ -44,7 +45,7 @@ const recentOrders = [
     customer: "राजेश गुप्ता",
     date: "2023-10-09",
     total: 149.99,
-    status: "पूरा",
+    status: "completed",
     items: 1,
   },
   {
@@ -52,7 +53,7 @@ const recentOrders = [
     customer: "मोहन पटेल",
     date: "2023-10-08",
     total: 1299.99,
-    status: "पूरा",
+    status: "completed",
     items: 4,
   },
   {
@@ -60,7 +61,7 @@ const recentOrders = [
     customer: "दीपा जोशी",
     date: "2023-10-08",
     total: 325.97,
-    status: "पूरा",
+    status: "completed",
     items: 3,
   },
 ];
@@ -96,7 +97,7 @@ const activeDeliveries = [
     customer: "सीमा वर्मा",
     address: "45, शिवाजी नगर, इटारसी",
     rider: "अमित यादव",
-    status: "पिकअप",
+    status: "pickup",
     time: "11:30 AM",
   },
   {
@@ -105,12 +106,14 @@ const activeDeliveries = [
     customer: "अनिल शर्मा",
     address: "22, गांधी रोड, इटारसी",
     rider: "सुरेश वर्मा",
-    status: "रास्ते में",
+    status: "enRoute",
     time: "11:45 AM",
   },
 ];
 
 const AdminDashboard = () => {
+  const { t } = useLanguage();
+
   return (
     <AdminLayout>
       <div className="space-y-6">
@@ -120,11 +123,11 @@ const AdminDashboard = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">कुल ऑर्डर</p>
+                  <p className="text-sm font-medium text-gray-500">{t("totalOrders")}</p>
                   <h3 className="text-2xl font-bold mt-1">152</h3>
                   <p className="text-xs text-green-500 mt-1 flex items-center">
                     <TrendingUp className="w-3 h-3 mr-1" />
-                    +12.5% पिछले महीने से
+                    {t("increaseFromLastMonth").replace("{percent}", "12.5")}
                   </p>
                 </div>
                 <div className="bg-blue-100 p-3 rounded-full">
@@ -138,11 +141,11 @@ const AdminDashboard = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">कुल उपयोगकर्ता</p>
+                  <p className="text-sm font-medium text-gray-500">{t("totalUsers")}</p>
                   <h3 className="text-2xl font-bold mt-1">84</h3>
                   <p className="text-xs text-green-500 mt-1 flex items-center">
                     <TrendingUp className="w-3 h-3 mr-1" />
-                    +8.2% पिछले महीने से
+                    {t("increaseFromLastMonth").replace("{percent}", "8.2")}
                   </p>
                 </div>
                 <div className="bg-green-100 p-3 rounded-full">
@@ -156,11 +159,11 @@ const AdminDashboard = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">कुल उत्पाद</p>
+                  <p className="text-sm font-medium text-gray-500">{t("totalProducts")}</p>
                   <h3 className="text-2xl font-bold mt-1">324</h3>
                   <p className="text-xs text-green-500 mt-1 flex items-center">
                     <TrendingUp className="w-3 h-3 mr-1" />
-                    +15.3% पिछले महीने से
+                    {t("increaseFromLastMonth").replace("{percent}", "15.3")}
                   </p>
                 </div>
                 <div className="bg-purple-100 p-3 rounded-full">
@@ -174,11 +177,11 @@ const AdminDashboard = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">आज के ऑर्डर</p>
+                  <p className="text-sm font-medium text-gray-500">{t("todayOrders")}</p>
                   <h3 className="text-2xl font-bold mt-1">12</h3>
                   <p className="text-xs text-neutral-500 mt-1 flex items-center">
                     <Clock className="w-3 h-3 mr-1" />
-                    आज का अपडेट
+                    {t("updatedToday")}
                   </p>
                 </div>
                 <div className="bg-orange-100 p-3 rounded-full">
@@ -192,10 +195,10 @@ const AdminDashboard = () => {
         {/* Recent Orders */}
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>हाल के ऑर्डर</CardTitle>
+            <CardTitle>{t("recentOrders")}</CardTitle>
             <Link to="/admin/orders">
               <Button variant="outline" size="sm">
-                सभी देखें
+                {t("viewAll")}
               </Button>
             </Link>
           </CardHeader>
@@ -203,13 +206,13 @@ const AdminDashboard = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>ऑर्डर आईडी</TableHead>
-                  <TableHead>ग्राहक</TableHead>
-                  <TableHead>दिनांक</TableHead>
-                  <TableHead>आइटम</TableHead>
-                  <TableHead>राशि</TableHead>
-                  <TableHead>स्थिति</TableHead>
-                  <TableHead className="text-right">एक्शन</TableHead>
+                  <TableHead>{t("orderId")}</TableHead>
+                  <TableHead>{t("customer")}</TableHead>
+                  <TableHead>{t("date")}</TableHead>
+                  <TableHead>{t("items")}</TableHead>
+                  <TableHead>{t("amount")}</TableHead>
+                  <TableHead>{t("status")}</TableHead>
+                  <TableHead className="text-right">{t("action")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -222,20 +225,20 @@ const AdminDashboard = () => {
                     <TableCell>₹{order.total.toFixed(2)}</TableCell>
                     <TableCell>
                       <Badge
-                        variant={order.status === "पूरा" ? "success" : "secondary"}
+                        variant={order.status === "completed" ? "success" : "secondary"}
                         className={
-                          order.status === "पूरा"
+                          order.status === "completed"
                             ? "bg-green-100 text-green-800"
                             : "bg-blue-100 text-blue-800"
                         }
                       >
-                        {order.status}
+                        {t(order.status)}
                       </Badge>
                     </TableCell>
                     <TableCell className="text-right">
                       <Link to={`/admin/orders/${order.id}`}>
                         <Button variant="ghost" size="sm">
-                          विवरण
+                          {t("details")}
                         </Button>
                       </Link>
                     </TableCell>
@@ -250,10 +253,10 @@ const AdminDashboard = () => {
           {/* Low Stock Products */}
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle>कम स्टॉक वाले उत्पाद</CardTitle>
+              <CardTitle>{t("lowStockProducts")}</CardTitle>
               <Link to="/admin/products">
                 <Button variant="outline" size="sm">
-                  सभी देखें
+                  {t("viewAll")}
                 </Button>
               </Link>
             </CardHeader>
@@ -261,10 +264,10 @@ const AdminDashboard = () => {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>उत्पाद</TableHead>
-                    <TableHead>स्टॉक</TableHead>
-                    <TableHead>श्रेणी</TableHead>
-                    <TableHead className="text-right">एक्शन</TableHead>
+                    <TableHead>{t("product")}</TableHead>
+                    <TableHead>{t("stock")}</TableHead>
+                    <TableHead>{t("category")}</TableHead>
+                    <TableHead className="text-right">{t("action")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -283,7 +286,7 @@ const AdminDashboard = () => {
                       <TableCell className="text-right">
                         <Link to={`/admin/products/${product.id}`}>
                           <Button variant="ghost" size="sm">
-                            स्टॉक अपडेट
+                            {t("updateStock")}
                           </Button>
                         </Link>
                       </TableCell>
@@ -297,10 +300,10 @@ const AdminDashboard = () => {
           {/* Active Deliveries */}
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle>चल रही डिलीवरी</CardTitle>
+              <CardTitle>{t("activeDeliveries")}</CardTitle>
               <Link to="/admin/delivery">
                 <Button variant="outline" size="sm">
-                  सभी देखें
+                  {t("viewAll")}
                 </Button>
               </Link>
             </CardHeader>
@@ -308,11 +311,11 @@ const AdminDashboard = () => {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>ऑर्डर</TableHead>
-                    <TableHead>ग्राहक</TableHead>
-                    <TableHead>राइडर</TableHead>
-                    <TableHead>स्थिति</TableHead>
-                    <TableHead className="text-right">ट्रैक</TableHead>
+                    <TableHead>{t("orders")}</TableHead>
+                    <TableHead>{t("customer")}</TableHead>
+                    <TableHead>{t("rider")}</TableHead>
+                    <TableHead>{t("status")}</TableHead>
+                    <TableHead className="text-right">{t("track")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -326,19 +329,19 @@ const AdminDashboard = () => {
                           variant="outline"
                           className={`
                             ${
-                              delivery.status === "पिकअप"
+                              delivery.status === "pickup"
                                 ? "bg-yellow-100 text-yellow-800 border-yellow-200"
                                 : "bg-blue-100 text-blue-800 border-blue-200"
                             }
                           `}
                         >
-                          {delivery.status}
+                          {t(delivery.status)}
                         </Badge>
                       </TableCell>
                       <TableCell className="text-right">
                         <Link to={`/admin/delivery/${delivery.id}`}>
                           <Button variant="ghost" size="sm">
-                            ट्रैक
+                            {t("track")}
                           </Button>
                         </Link>
                       </TableCell>

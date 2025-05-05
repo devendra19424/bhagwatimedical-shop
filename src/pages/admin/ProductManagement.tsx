@@ -31,6 +31,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Sample product data
 const initialProducts = [
@@ -89,6 +90,7 @@ const categories = [
 ];
 
 const ProductManagement = () => {
+  const { t } = useLanguage();
   const [products, setProducts] = useState(initialProducts);
   const [searchQuery, setSearchQuery] = useState("");
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
@@ -133,7 +135,7 @@ const ProductManagement = () => {
   
   // Delete product
   const handleDelete = (id: number) => {
-    if (window.confirm("क्या आप वाकई इस उत्पाद को हटाना चाहते हैं?")) {
+    if (window.confirm(t("confirmDelete"))) {
       setProducts(products.filter((product) => product.id !== id));
     }
   };
@@ -190,14 +192,14 @@ const ProductManagement = () => {
     <AdminLayout>
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <h1 className="text-2xl font-bold">उत्पाद प्रबंधन</h1>
+          <h1 className="text-2xl font-bold">{t("productManagement")}</h1>
           
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <div className="relative flex-grow md:w-64">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-400" />
               <Input
                 type="search"
-                placeholder="उत्पाद खोजें..."
+                placeholder={t("searchProducts")}
                 className="pl-8"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -217,25 +219,23 @@ const ProductManagement = () => {
               <DialogTrigger asChild>
                 <Button>
                   <Plus className="h-4 w-4 mr-2" />
-                  नया उत्पाद
+                  {t("newProduct")}
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle>
-                    {editingProduct ? "उत्पाद अपडेट करें" : "नया उत्पाद जोड़ें"}
+                    {editingProduct ? t("updateProduct") : t("addNewProduct")}
                   </DialogTitle>
                   <DialogDescription>
-                    {editingProduct
-                      ? "इस उत्पाद की जानकारी अपडेट करें।"
-                      : "अपने स्टोर में एक नया उत्पाद जोड़ें।"}
+                    {editingProduct ? t("updateProductInfo") : t("addProductInfo")}
                   </DialogDescription>
                 </DialogHeader>
                 
                 <div className="grid gap-4 py-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="name">उत्पाद का नाम</Label>
+                      <Label htmlFor="name">{t("productName")}</Label>
                       <Input
                         id="name"
                         value={formData.name}
@@ -246,7 +246,7 @@ const ProductManagement = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="category">श्रेणी</Label>
+                      <Label htmlFor="category">{t("category")}</Label>
                       <Select
                         value={formData.category}
                         onValueChange={(value) =>
@@ -254,7 +254,7 @@ const ProductManagement = () => {
                         }
                       >
                         <SelectTrigger id="category">
-                          <SelectValue placeholder="श्रेणी चुनें" />
+                          <SelectValue placeholder={t("selectCategory")} />
                         </SelectTrigger>
                         <SelectContent>
                           {categories.map((category) => (
@@ -272,7 +272,7 @@ const ProductManagement = () => {
                   
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="price">मूल्य (₹)</Label>
+                      <Label htmlFor="price">{t("price")}</Label>
                       <Input
                         id="price"
                         type="number"
@@ -284,7 +284,7 @@ const ProductManagement = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="stock">स्टॉक मात्रा</Label>
+                      <Label htmlFor="stock">{t("stockQuantity")}</Label>
                       <Input
                         id="stock"
                         type="number"
@@ -298,7 +298,7 @@ const ProductManagement = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="description">विवरण</Label>
+                    <Label htmlFor="description">{t("description")}</Label>
                     <Textarea
                       id="description"
                       value={formData.description}
@@ -310,7 +310,7 @@ const ProductManagement = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="imageUrl">इमेज URL</Label>
+                    <Label htmlFor="imageUrl">{t("imageUrl")}</Label>
                     <Input
                       id="imageUrl"
                       type="url"
@@ -318,12 +318,12 @@ const ProductManagement = () => {
                       onChange={(e) =>
                         setFormData({ ...formData, imageUrl: e.target.value })
                       }
-                      placeholder="उत्पाद की इमेज का URL"
+                      placeholder={t("productImageUrl")}
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="usageInstructions">उपयोग निर्देश</Label>
+                    <Label htmlFor="usageInstructions">{t("usageInstructions")}</Label>
                     <Textarea
                       id="usageInstructions"
                       value={formData.usageInstructions}
@@ -333,31 +333,31 @@ const ProductManagement = () => {
                           usageInstructions: e.target.value,
                         })
                       }
-                      placeholder="खुराक और उपयोग के निर्देश"
+                      placeholder={t("dosageInstructions")}
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="uses">उपयोग (अलग पंक्तियों में)</Label>
+                    <Label htmlFor="uses">{t("uses")}</Label>
                     <Textarea
                       id="uses"
                       value={formData.uses}
                       onChange={(e) =>
                         setFormData({ ...formData, uses: e.target.value })
                       }
-                      placeholder="उत्पाद के मुख्य उपयोग"
+                      placeholder={t("mainUses")}
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="sideEffects">साइड इफेक्ट्स (अलग पंक्तियों में)</Label>
+                    <Label htmlFor="sideEffects">{t("sideEffects")}</Label>
                     <Textarea
                       id="sideEffects"
                       value={formData.sideEffects}
                       onChange={(e) =>
                         setFormData({ ...formData, sideEffects: e.target.value })
                       }
-                      placeholder="संभावित साइड इफेक्ट्स"
+                      placeholder={t("potentialSideEffects")}
                     />
                   </div>
                 </div>
@@ -368,10 +368,10 @@ const ProductManagement = () => {
                     setEditingProduct(null);
                     setIsAddDialogOpen(false);
                   }}>
-                    रद्द करें
+                    {t("cancel")}
                   </Button>
                   <Button type="button" onClick={handleSave}>
-                    {editingProduct ? "अपडेट करें" : "जोड़ें"}
+                    {editingProduct ? t("update") : t("add")}
                   </Button>
                 </DialogFooter>
               </DialogContent>
@@ -383,11 +383,11 @@ const ProductManagement = () => {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>उत्पाद</TableHead>
-                <TableHead>श्रेणी</TableHead>
-                <TableHead className="text-right">मूल्य</TableHead>
-                <TableHead className="text-right">स्टॉक</TableHead>
-                <TableHead className="text-right">एक्शन</TableHead>
+                <TableHead>{t("product")}</TableHead>
+                <TableHead>{t("category")}</TableHead>
+                <TableHead className="text-right">{t("price")}</TableHead>
+                <TableHead className="text-right">{t("stock")}</TableHead>
+                <TableHead className="text-right">{t("action")}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -449,7 +449,7 @@ const ProductManagement = () => {
               ) : (
                 <TableRow>
                   <TableCell colSpan={5} className="text-center py-6 text-gray-500">
-                    कोई उत्पाद नहीं मिला
+                    {t("noProductsFound")}
                   </TableCell>
                 </TableRow>
               )}

@@ -1,75 +1,103 @@
 
 export const productTranslations = {
-  searchPlaceholder: {
-    en: "Search medicines, treatment, diseases...",
-    hi: "खोजें दवाइयां, उपचार, रोग...",
+  allProducts: {
+    en: "All Products",
+    hi: "सभी उत्पाद",
   },
   allMedicines: {
     en: "All Medicines",
     hi: "सभी दवाइयां",
   },
-  addToCart: {
-    en: "Add to Cart",
-    hi: "कार्ट में जोड़ें",
-  },
-  outOfStock: {
-    en: "Out of Stock",
-    hi: "स्टॉक में नहीं है",
-  },
-  priceRange: {
-    en: "Price Range",
-    hi: "मूल्य सीमा",
+  filterBy: {
+    en: "Filter By",
+    hi: "फिल्टर करें",
   },
   sortBy: {
     en: "Sort By",
     hi: "क्रमबद्ध करें",
   },
-  filters: {
-    en: "Filters",
-    hi: "फ़िल्टर",
+  price: {
+    en: "Price",
+    hi: "कीमत",
+  },
+  lowToHigh: {
+    en: "Low to High",
+    hi: "कम से अधिक",
+  },
+  highToLow: {
+    en: "High to Low",
+    hi: "अधिक से कम",
+  },
+  popularity: {
+    en: "Popularity",
+    hi: "लोकप्रियता",
+  },
+  newest: {
+    en: "Newest",
+    hi: "नवीनतम",
   },
   searchProducts: {
-    en: "Search products...",
-    hi: "उत्पाद खोजें...",
+    en: "Search Products",
+    hi: "उत्पाद खोजें",
   },
-  noResults: {
-    en: "No products found",
-    hi: "कोई उत्पाद नहीं मिला",
+  addToCart: {
+    en: "Add to Cart",
+    hi: "कार्ट में जोड़ें",
   },
-  ourProducts: {
-    en: "Our Products",
-    hi: "हमारे उत्पाद",
+  viewDetails: {
+    en: "View Details",
+    hi: "विवरण देखें",
   },
-  featured: {
-    en: "Featured",
-    hi: "विशेष",
+  inStock: {
+    en: "In Stock",
+    hi: "स्टॉक में",
   },
-  priceLowToHigh: {
-    en: "Price: Low to High",
-    hi: "मूल्य: कम से अधिक",
+  outOfStock: {
+    en: "Out of Stock",
+    hi: "स्टॉक में नहीं",
   },
-  priceHighToLow: {
-    en: "Price: High to Low",
-    hi: "मूल्य: अधिक से कम",
+  productDescription: {
+    en: "Product Description",
+    hi: "उत्पाद विवरण",
   },
-  nameAZ: {
-    en: "Name: A to Z",
-    hi: "नाम: A से Z",
+  dosageInstructions: {
+    en: "Dosage & Instructions",
+    hi: "खुराक और निर्देश",
   },
-  nameZA: {
-    en: "Name: Z to A",
-    hi: "नाम: Z से A",
+  composition: {
+    en: "Composition",
+    hi: "संरचना",
   },
-  categories: {
-    en: "Categories",
-    hi: "श्रेणियां",
+  manufacturer: {
+    en: "Manufacturer",
+    hi: "निर्माता",
   },
-  chooseYourCategory: {
-    en: "Choose your preferred category",
-    hi: "अपनी पसंदीदा श्रेणी चुनें",
+  expiryDate: {
+    en: "Expiry Date",
+    hi: "समाप्ति तिथि",
   },
-  adjustSearch: {
-    en: "Try adjusting your search or filter to find what you're looking for",
-    hi: "अपनी खोज या फ़िल्टर को समायोजित करके देखें",
+  uses: {
+    en: "Uses",
+    hi: "उपयोग",
   },
+  sideEffects: {
+    en: "Side Effects",
+    hi: "दुष्प्रभाव",
+  },
+  similarProducts: {
+    en: "Similar Products",
+    hi: "समान उत्पाद",
+  },
+  viewAllProducts: {
+    en: "View All Products",
+    hi: "सभी प्रोडक्ट देखें"
+  },
+  productNotFound: {
+    en: "Product Not Found",
+    hi: "प्रोडक्ट नहीं मिला"
+  },
+  productNotFoundDescription: {
+    en: "Sorry, the product you are looking for does not exist.",
+    hi: "क्षमा करें, आपके द्वारा खोजा गया प्रोडक्ट मौजूद नहीं है।"
+  }
 };

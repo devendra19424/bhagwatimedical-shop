@@ -28,5 +28,12 @@ export const navigationTranslations = {
     en: "Quick Links",
     hi: "त्वरित लिंक",
   },
+  myAccount: {
+    en: "My Account",
+    hi: "मेरा अकाउंट",
+  },
+  categories: {
+    en: "Categories",
+    hi: "श्रेणियां",
+  }
 };
-

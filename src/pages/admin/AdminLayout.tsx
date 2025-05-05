@@ -13,6 +13,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -21,40 +22,41 @@ interface AdminLayoutProps {
 const AdminLayout = ({ children }: AdminLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
+  const { t, lang } = useLanguage();
   
   const navigation = [
     {
-      name: "डैशबोर्ड",
+      name: t("dashboard"),
       href: "/admin",
       icon: LayoutDashboard,
       current: location.pathname === "/admin",
     },
     {
-      name: "उत्पाद",
+      name: t("products"),
       href: "/admin/products",
       icon: Package,
       current: location.pathname.includes("/admin/products"),
     },
     {
-      name: "ऑर्डर",
+      name: t("orders"),
       href: "/admin/orders",
       icon: ShoppingCart,
       current: location.pathname.includes("/admin/orders"),
     },
     {
-      name: "डिलीवरी",
+      name: t("delivery"),
       href: "/admin/delivery",
       icon: Truck,
       current: location.pathname.includes("/admin/delivery"),
     },
     {
-      name: "उपयोगकर्ता",
+      name: t("users"),
       href: "/admin/users",
       icon: Users,
       current: location.pathname.includes("/admin/users"),
     },
     {
-      name: "सेटिंग्स",
+      name: t("settings"),
       href: "/admin/settings",
       icon: Settings,
       current: location.pathname.includes("/admin/settings"),
@@ -79,7 +81,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       >
         <div className="flex items-center justify-between h-16 px-4 border-b">
           <div className="flex items-center">
-            <span className="text-xl font-bold text-primary">मेडिकल ऐडमिन</span>
+            <span className="text-xl font-bold text-primary">{t("adminShort")}</span>
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
@@ -115,7 +117,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
           <Link to="/" className="w-full">
             <Button variant="outline" className="w-full justify-start">
               <ChevronLeft className="mr-2 h-4 w-4" />
-              वापस स्टोर पर जाएं
+              {t("backToStore")}
             </Button>
           </Link>
         </div>
@@ -125,7 +127,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
         <div className="flex flex-col flex-grow pt-5 overflow-y-auto border-r bg-white">
           <div className="flex items-center flex-shrink-0 px-4 mb-5">
-            <span className="text-xl font-bold text-primary">मेडिकल ऐडमिन</span>
+            <span className="text-xl font-bold text-primary">{t("adminShort")}</span>
           </div>
           
           <div className="flex flex-col flex-grow">
@@ -155,7 +157,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
             <Link to="/" className="w-full">
               <Button variant="outline" className="w-full justify-start">
                 <ChevronLeft className="mr-2 h-4 w-4" />
-                वापस स्टोर पर जाएं
+                {t("backToStore")}
               </Button>
             </Link>
           </div>
@@ -176,11 +178,11 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
           
           <div className="flex justify-between items-center w-full">
             <h1 className="text-xl font-semibold text-gray-900 md:ml-2">
-              भगवती मेडिकल ऐडमिन पैनल
+              {t("adminPanel")}
             </h1>
             
             <div className="flex items-center">
-              <span className="text-sm font-medium text-gray-700 mr-2">अदमिन</span>
+              <span className="text-sm font-medium text-gray-700 mr-2">{t("admin")}</span>
               <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
                 <span className="font-medium">A</span>
               </div>
