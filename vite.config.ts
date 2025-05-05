@@ -13,16 +13,10 @@ export default defineConfig(({ mode }) => ({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+    // Add mainFields to ensure proper module resolution
+    mainFields: ['module', 'jsnext:main', 'jsnext', 'main'],
   },
-  server: {
-    port: 8080,
-    host: "::",
-    // Optimize for low bandwidth areas
-    hmr: {
-      overlay: true,
-    },
-  },
-  // Optimize build settings
+  // Fix import handling of directories
   build: {
     // Target older browsers for better compatibility in areas with older devices
     target: 'es2015',
@@ -33,7 +27,7 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           // Split vendor code from app code
           vendor: ['react', 'react-dom', 'react-router-dom'],
-          ui: ['@/components/ui'],
+          ui: ['@/components/ui/index'],
         },
       },
     },
@@ -45,4 +39,12 @@ export default defineConfig(({ mode }) => ({
     sourcemap: true,
   },
   base: './',
+  server: {
+    port: 8080,
+    host: "::",
+    // Optimize for low bandwidth areas
+    hmr: {
+      overlay: true,
+    },
+  },
 }));
