@@ -7,8 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useLanguage } from "@/context/LanguageContext";
+import { Helmet } from "react-helmet";
 
 const LoginPage = () => {
+  const { t } = useLanguage();
+  
   // Login form state
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -42,29 +46,36 @@ const LoginPage = () => {
 
   return (
     <Layout>
+      {/* SEO Optimization */}
+      <Helmet>
+        <title>Login to Bhagwati Medical Store | Pharmacy in Purani Itarsi</title>
+        <meta name="description" content="Login or register for Bhagwati Medical Store - Your trusted pharmacy and medical shop in Itarsi, Purani Itarsi. Order medicines online with fast delivery." />
+        <meta name="keywords" content="login, register, bhagwati medical, pharmacy itarsi, medical shop purani itarsi, dawai ki dukan itarsi" />
+      </Helmet>
+
       <div className="container mx-auto py-10 px-4 max-w-md">
         <Tabs defaultValue="login" className="w-full">
           <TabsList className="grid w-full grid-cols-2 mb-4">
-            <TabsTrigger value="login">लॉगिन</TabsTrigger>
-            <TabsTrigger value="register">रजिस्टर</TabsTrigger>
+            <TabsTrigger value="login">{t("login")}</TabsTrigger>
+            <TabsTrigger value="register">{t("register")}</TabsTrigger>
           </TabsList>
           
           <TabsContent value="login">
             <Card>
               <CardHeader>
-                <CardTitle>अकाउंट में लॉगिन करें</CardTitle>
+                <CardTitle>{t("loginToAccount")}</CardTitle>
                 <CardDescription>
-                  अपने ईमेल और पासवर्ड का उपयोग करके लॉगिन करें।
+                  {t("loginWithEmail")}
                 </CardDescription>
               </CardHeader>
               <form onSubmit={handleLogin}>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email">ईमेल</Label>
+                    <Label htmlFor="email">{t("email")}</Label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="आपका ईमेल"
+                      placeholder={t("yourEmail")}
                       required
                       value={loginEmail}
                       onChange={(e) => setLoginEmail(e.target.value)}
@@ -72,15 +83,15 @@ const LoginPage = () => {
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="password">पासवर्ड</Label>
+                      <Label htmlFor="password">{t("password")}</Label>
                       <Link to="/forgot-password" className="text-sm text-primary hover:underline">
-                        पासवर्ड भूल गए?
+                        {t("forgotPassword")}
                       </Link>
                     </div>
                     <Input
                       id="password"
                       type="password"
-                      placeholder="आपका पासवर्ड"
+                      placeholder={t("yourPassword")}
                       required
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
@@ -89,7 +100,7 @@ const LoginPage = () => {
                 </CardContent>
                 <CardFooter>
                   <Button type="submit" className="w-full">
-                    लॉगिन करें
+                    {t("loginButton")}
                   </Button>
                 </CardFooter>
               </form>
@@ -99,62 +110,62 @@ const LoginPage = () => {
           <TabsContent value="register">
             <Card>
               <CardHeader>
-                <CardTitle>नया अकाउंट बनाएं</CardTitle>
+                <CardTitle>{t("createAccount")}</CardTitle>
                 <CardDescription>
-                  भगवती मेडिकल स्टोर पर ऑर्डर करने के लिए रजिस्टर करें।
+                  {t("registerToOrder")}
                 </CardDescription>
               </CardHeader>
               <form onSubmit={handleRegister}>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">पूरा नाम</Label>
+                    <Label htmlFor="name">{t("fullName")}</Label>
                     <Input
                       id="name"
-                      placeholder="आपका पूरा नाम"
+                      placeholder={t("yourFullName")}
                       required
                       value={registerName}
                       onChange={(e) => setRegisterName(e.target.value)}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="register-email">ईमेल</Label>
+                    <Label htmlFor="register-email">{t("email")}</Label>
                     <Input
                       id="register-email"
                       type="email"
-                      placeholder="आपका ईमेल"
+                      placeholder={t("yourEmail")}
                       required
                       value={registerEmail}
                       onChange={(e) => setRegisterEmail(e.target.value)}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="mobile">मोबाइल नंबर</Label>
+                    <Label htmlFor="mobile">{t("mobileNumber")}</Label>
                     <Input
                       id="mobile"
                       type="tel"
-                      placeholder="आपका मोबाइल नंबर"
+                      placeholder={t("yourMobileNumber")}
                       required
                       value={registerMobile}
                       onChange={(e) => setRegisterMobile(e.target.value)}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="register-password">पासवर्ड</Label>
+                    <Label htmlFor="register-password">{t("password")}</Label>
                     <Input
                       id="register-password"
                       type="password"
-                      placeholder="नया पासवर्ड"
+                      placeholder={t("yourPassword")}
                       required
                       value={registerPassword}
                       onChange={(e) => setRegisterPassword(e.target.value)}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="confirm-password">पासवर्ड की पुष्टि करें</Label>
+                    <Label htmlFor="confirm-password">{t("confirmPassword")}</Label>
                     <Input
                       id="confirm-password"
                       type="password"
-                      placeholder="पासवर्ड फिर से डालें"
+                      placeholder={t("reEnterPassword")}
                       required
                       value={registerConfirmPassword}
                       onChange={(e) => setRegisterConfirmPassword(e.target.value)}
@@ -163,7 +174,7 @@ const LoginPage = () => {
                 </CardContent>
                 <CardFooter>
                   <Button type="submit" className="w-full">
-                    रजिस्टर करें
+                    {t("registerButton")}
                   </Button>
                 </CardFooter>
               </form>

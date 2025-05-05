@@ -1,14 +1,19 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
 
 User-agent: *
 Allow: /
+
+# Products
+Allow: /products/
+Allow: /categories/
+
+# Main pages
+Allow: /login
+Allow: /cart
+Allow: /checkout
+
+# Disallow admin area
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://bhagwatimedical.shop/sitemap.xml
+

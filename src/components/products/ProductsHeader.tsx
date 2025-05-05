@@ -9,6 +9,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useLanguage } from "@/context/LanguageContext";
+import { useEffect } from "react";
+import { toast } from "@/hooks/use-toast";
 
 interface ProductsHeaderProps {
   searchQuery: string;
@@ -23,7 +25,36 @@ export function ProductsHeader({
   sortOption,
   setSortOption,
 }: ProductsHeaderProps) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+
+  // Debounce search input to improve performance
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchQuery.length > 0) {
+        // Analytics tracking of search terms could be added here
+        console.log(`Search query: ${searchQuery}`);
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
+  // Handle search input change with validation
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    
+    // Add simple validation
+    if (value.length > 50) {
+      toast({
+        title: lang === 'en' ? "Search too long" : "खोज बहुत लंबी है",
+        description: lang === 'en' ? "Please enter a shorter search term" : "कृपया छोटा खोज शब्द दर्ज करें",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setSearchQuery(value);
+  };
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-8 gap-3 md:gap-4">
@@ -37,7 +68,8 @@ export function ProductsHeader({
             placeholder={t("searchProducts")}
             className="pl-8 text-sm h-9 md:h-10 w-full"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={handleSearchChange}
+            aria-label={t("searchProducts")}
           />
         </div>
         

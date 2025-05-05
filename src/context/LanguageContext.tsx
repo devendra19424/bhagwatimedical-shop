@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { translations, Language, TranslationType } from "@/translations";
 
 interface LanguageContextType {
@@ -17,7 +17,16 @@ export const useLanguage = () => {
 };
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<Language>("hi");
+  // Load saved language preference or default to Hindi
+  const [lang, setLang] = useState<Language>(() => {
+    const savedLang = localStorage.getItem("preferred-language");
+    return (savedLang === "en" || savedLang === "hi") ? savedLang as Language : "hi";
+  });
+
+  // Save language preference whenever it changes
+  useEffect(() => {
+    localStorage.setItem("preferred-language", lang);
+  }, [lang]);
 
   const toggleLanguage = () => setLang((prev) => (prev === "en" ? "hi" : "en"));
 
@@ -35,4 +44,3 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     </LanguageContext.Provider>
   );
 };
-

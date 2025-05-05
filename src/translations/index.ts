@@ -7,6 +7,7 @@ import { homeTranslations } from "./home";
 import { deliveryTranslations } from "./delivery";
 import { contactTranslations } from "./contact";
 import { languageTranslations } from "./language";
+import { authTranslations } from "./auth";
 import { productImages } from "./productImages";
 
 export const translations = {
@@ -18,6 +19,7 @@ export const translations = {
   ...deliveryTranslations,
   ...contactTranslations,
   ...languageTranslations,
+  ...authTranslations,
 };
 
 export { productImages };
