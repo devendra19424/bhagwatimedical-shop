@@ -7,7 +7,7 @@ import { ProductImage } from "@/components/products/detail/ProductImage";
 import { ProductInfo } from "@/components/products/detail/ProductInfo";
 import { RelatedProducts } from "@/components/products/detail/RelatedProducts";
 import { useLanguage } from "@/context/LanguageContext";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 // Dummy product data
 const products = [
