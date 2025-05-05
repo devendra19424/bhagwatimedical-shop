@@ -5,12 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/translations";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const { lang, toggleLanguage, t } = useLanguage();
@@ -32,6 +37,9 @@ const Header = () => {
                 </Link>
                 <Link to="/categories" className="text-lg font-medium">
                   {t("categories")}
+                </Link>
+                <Link to="/profile" className="text-lg font-medium">
+                  {lang === "en" ? "My Account" : "मेरा अकाउंट"}
                 </Link>
               </nav>
             </SheetContent>
@@ -94,18 +102,46 @@ const Header = () => {
             </Button>
           </Link>
 
-          <Link to="/login" className="hidden md:block">
-            <Button variant="outline" size="sm" className="gap-2">
-              <User className="h-4 w-4" />
-              {t("login")}
-            </Button>
-          </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" className="gap-2 hidden md:flex">
+                <User className="h-4 w-4" />
+                {t("login")}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem asChild>
+                <Link to="/login" className="w-full">
+                  {lang === "en" ? "Login" : "लॉगिन"}
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/profile" className="w-full">
+                  {lang === "en" ? "My Account" : "मेरा अकाउंट"}
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
-          <Link to="/login" className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <User className="h-5 w-5" />
-            </Button>
-          </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <User className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem asChild>
+                <Link to="/login" className="w-full">
+                  {lang === "en" ? "Login" : "लॉगिन"}
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/profile" className="w-full">
+                  {lang === "en" ? "My Account" : "मेरा अकाउंट"}
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>

@@ -9,6 +9,7 @@ import { contactTranslations } from "./contact";
 import { languageTranslations } from "./language";
 import { authTranslations } from "./auth";
 import { productImages } from "./productImages";
+import { profileTranslations } from "./profile";
 
 export const translations = {
   ...commonTranslations,
@@ -20,6 +21,7 @@ export const translations = {
   ...contactTranslations,
   ...languageTranslations,
   ...authTranslations,
+  ...profileTranslations,
 };
 
 export { productImages };

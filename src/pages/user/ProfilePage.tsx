@@ -7,19 +7,22 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Layout from "@/components/layout/Layout";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ProfilePage = () => {
+  const { t, lang } = useLanguage();
+  
   // Profile information state
-  const [name, setName] = useState("राम शर्मा");
+  const [name, setName] = useState(lang === "en" ? "Ram Sharma" : "राम शर्मा");
   const [email, setEmail] = useState("ram.sharma@example.com");
   const [mobile, setMobile] = useState("9876543210");
 
   // Address state
-  const [address, setAddress] = useState("123, मुख्य बाज़ार");
-  const [city, setCity] = useState("इटारसी");
-  const [state, setState] = useState("मध्य प्रदेश");
+  const [address, setAddress] = useState(lang === "en" ? "123, Main Market" : "123, मुख्य बाज़ार");
+  const [city, setCity] = useState(lang === "en" ? "Itarsi" : "इटारसी");
+  const [state, setState] = useState(lang === "en" ? "Madhya Pradesh" : "मध्य प्रदेश");
   const [pincode, setPincode] = useState("461111");
-  const [landmark, setLandmark] = useState("शिव मंदिर के पास");
+  const [landmark, setLandmark] = useState(lang === "en" ? "Near Shiv Temple" : "शिव मंदिर के पास");
 
   // Password change state
   const [currentPassword, setCurrentPassword] = useState("");
@@ -54,27 +57,39 @@ const ProfilePage = () => {
   return (
     <Layout>
       <div className="container mx-auto py-10 px-4">
-        <h1 className="text-2xl font-bold mb-6">मेरा अकाउंट</h1>
+        <h1 className="text-2xl font-bold mb-6">
+          {lang === "en" ? "My Account" : "मेरा अकाउंट"}
+        </h1>
         
         <Tabs defaultValue="profile" className="w-full max-w-3xl mx-auto">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="profile">प्रोफाइल</TabsTrigger>
-            <TabsTrigger value="address">पता</TabsTrigger>
-            <TabsTrigger value="password">पासवर्ड</TabsTrigger>
+            <TabsTrigger value="profile">
+              {lang === "en" ? "Profile" : "प्रोफाइल"}
+            </TabsTrigger>
+            <TabsTrigger value="address">
+              {lang === "en" ? "Address" : "पता"}
+            </TabsTrigger>
+            <TabsTrigger value="password">
+              {lang === "en" ? "Password" : "पासवर्ड"}
+            </TabsTrigger>
           </TabsList>
           
           <TabsContent value="profile">
             <Card>
               <CardHeader>
-                <CardTitle>प्रोफाइल जानकारी</CardTitle>
+                <CardTitle>
+                  {lang === "en" ? "Profile Information" : "प्रोफाइल जानकारी"}
+                </CardTitle>
                 <CardDescription>
-                  अपनी व्यक्तिगत जानकारी अपडेट करें।
+                  {lang === "en" ? "Update your personal information." : "अपनी व्यक्तिगत जानकारी अपडेट करें।"}
                 </CardDescription>
               </CardHeader>
               <form onSubmit={handleProfileUpdate}>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="profile-name">पूरा नाम</Label>
+                    <Label htmlFor="profile-name">
+                      {lang === "en" ? "Full Name" : "पूरा नाम"}
+                    </Label>
                     <Input
                       id="profile-name"
                       value={name}
@@ -83,7 +98,9 @@ const ProfilePage = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="profile-email">ईमेल</Label>
+                    <Label htmlFor="profile-email">
+                      {lang === "en" ? "Email" : "ईमेल"}
+                    </Label>
                     <Input
                       id="profile-email"
                       type="email"
@@ -93,7 +110,9 @@ const ProfilePage = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="profile-mobile">मोबाइल नंबर</Label>
+                    <Label htmlFor="profile-mobile">
+                      {lang === "en" ? "Mobile Number" : "मोबाइल नंबर"}
+                    </Label>
                     <Input
                       id="profile-mobile"
                       type="tel"
@@ -104,7 +123,9 @@ const ProfilePage = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button type="submit">अपडेट करें</Button>
+                  <Button type="submit">
+                    {lang === "en" ? "Update" : "अपडेट करें"}
+                  </Button>
                 </CardFooter>
               </form>
             </Card>
@@ -113,15 +134,19 @@ const ProfilePage = () => {
           <TabsContent value="address">
             <Card>
               <CardHeader>
-                <CardTitle>डिलीवरी पता</CardTitle>
+                <CardTitle>
+                  {lang === "en" ? "Delivery Address" : "डिलीवरी पता"}
+                </CardTitle>
                 <CardDescription>
-                  अपना डिलीवरी पता अपडेट करें।
+                  {lang === "en" ? "Update your delivery address." : "अपना डिलीवरी पता अपडेट करें।"}
                 </CardDescription>
               </CardHeader>
               <form onSubmit={handleAddressUpdate}>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="street-address">गली/घर नंबर</Label>
+                    <Label htmlFor="street-address">
+                      {lang === "en" ? "Street/House Number" : "गली/घर नंबर"}
+                    </Label>
                     <Textarea
                       id="street-address"
                       value={address}
@@ -131,7 +156,9 @@ const ProfilePage = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="city">शहर</Label>
+                      <Label htmlFor="city">
+                        {lang === "en" ? "City" : "शहर"}
+                      </Label>
                       <Input
                         id="city"
                         value={city}
@@ -140,7 +167,9 @@ const ProfilePage = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="state">राज्य</Label>
+                      <Label htmlFor="state">
+                        {lang === "en" ? "State" : "राज्य"}
+                      </Label>
                       <Input
                         id="state"
                         value={state}
@@ -151,7 +180,9 @@ const ProfilePage = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="pincode">पिनकोड</Label>
+                      <Label htmlFor="pincode">
+                        {lang === "en" ? "Pincode" : "पिनकोड"}
+                      </Label>
                       <Input
                         id="pincode"
                         value={pincode}
@@ -160,7 +191,9 @@ const ProfilePage = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="landmark">लैंडमार्क</Label>
+                      <Label htmlFor="landmark">
+                        {lang === "en" ? "Landmark" : "लैंडमार्क"}
+                      </Label>
                       <Input
                         id="landmark"
                         value={landmark}
@@ -170,7 +203,9 @@ const ProfilePage = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button type="submit">अपडेट करें</Button>
+                  <Button type="submit">
+                    {lang === "en" ? "Update" : "अपडेट करें"}
+                  </Button>
                 </CardFooter>
               </form>
             </Card>
@@ -179,15 +214,19 @@ const ProfilePage = () => {
           <TabsContent value="password">
             <Card>
               <CardHeader>
-                <CardTitle>पासवर्ड बदलें</CardTitle>
+                <CardTitle>
+                  {lang === "en" ? "Change Password" : "पासवर्ड बदलें"}
+                </CardTitle>
                 <CardDescription>
-                  अपना पासवर्ड बदलें।
+                  {lang === "en" ? "Update your password." : "अपना पासवर्ड बदलें।"}
                 </CardDescription>
               </CardHeader>
               <form onSubmit={handlePasswordChange}>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="current-password">वर्तमान पासवर्ड</Label>
+                    <Label htmlFor="current-password">
+                      {lang === "en" ? "Current Password" : "वर्तमान पासवर्ड"}
+                    </Label>
                     <Input
                       id="current-password"
                       type="password"
@@ -197,7 +236,9 @@ const ProfilePage = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="new-password">नया पासवर्ड</Label>
+                    <Label htmlFor="new-password">
+                      {lang === "en" ? "New Password" : "नया पासवर्ड"}
+                    </Label>
                     <Input
                       id="new-password"
                       type="password"
@@ -207,7 +248,9 @@ const ProfilePage = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="confirm-new-password">नए पासवर्ड की पुष्टि करें</Label>
+                    <Label htmlFor="confirm-new-password">
+                      {lang === "en" ? "Confirm New Password" : "नए पासवर्ड की पुष्टि करें"}
+                    </Label>
                     <Input
                       id="confirm-new-password"
                       type="password"
@@ -218,7 +261,9 @@ const ProfilePage = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button type="submit">पासवर्ड बदलें</Button>
+                  <Button type="submit">
+                    {lang === "en" ? "Change Password" : "पासवर्ड बदलें"}
+                  </Button>
                 </CardFooter>
               </form>
             </Card>
