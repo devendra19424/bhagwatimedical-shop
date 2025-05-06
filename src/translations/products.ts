@@ -64,6 +64,10 @@ export const productTranslations = {
     en: "Dosage & Instructions",
     hi: "खुराक और निर्देश",
   },
+  dosage: {
+    en: "Dosage & Instructions",
+    hi: "खुराक और निर्देश",
+  },
   composition: {
     en: "Composition",
     hi: "संरचना",
@@ -99,5 +103,29 @@ export const productTranslations = {
   productNotFoundDescription: {
     en: "Sorry, the product you are looking for does not exist.",
     hi: "क्षमा करें, आपके द्वारा खोजा गया प्रोडक्ट मौजूद नहीं है।"
+  },
+  noResults: {
+    en: "No Products Found",
+    hi: "कोई उत्पाद नहीं मिला"
+  },
+  adjustSearch: {
+    en: "Try adjusting your search or filter criteria.",
+    hi: "अपनी खोज या फ़िल्टर मानदंड को समायोजित करने का प्रयास करें।"
+  },
+  reviews: {
+    en: "Reviews",
+    hi: "समीक्षाएँ"
+  },
+  fastDelivery: {
+    en: "Fast Delivery",
+    hi: "तेज़ डिलीवरी"
+  },
+  genuine: {
+    en: "100% Genuine Products",
+    hi: "100% असली उत्पाद"
+  },
+  genuineDescription: {
+    en: "We ensure all products are authentic and quality-tested.",
+    hi: "हम सुनिश्चित करते हैं कि सभी उत्पाद प्रामाणिक और गुणवत्ता परीक्षण किए गए हैं।"
   }
 };

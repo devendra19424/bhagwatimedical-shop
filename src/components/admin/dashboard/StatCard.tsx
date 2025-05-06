@@ -14,12 +14,12 @@ interface StatCardProps {
 
 export function StatCard({ title, value, icon, trend }: StatCardProps) {
   return (
-    <Card>
+    <Card className="shadow-sm hover:shadow-md transition-all duration-300 border-neutral-200">
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-gray-500">{title}</p>
-            <h3 className="text-2xl font-bold mt-1">{value}</h3>
+            <h3 className="text-2xl font-bold mt-1 text-neutral-800">{value}</h3>
             {trend && (
               <p className="text-xs text-green-500 mt-1 flex items-center">
                 {trend.icon}
@@ -27,7 +27,7 @@ export function StatCard({ title, value, icon, trend }: StatCardProps) {
               </p>
             )}
           </div>
-          <div className="bg-blue-100 p-3 rounded-full">{icon}</div>
+          <div className="bg-primary/10 p-3 rounded-full text-primary">{icon}</div>
         </div>
       </CardContent>
     </Card>

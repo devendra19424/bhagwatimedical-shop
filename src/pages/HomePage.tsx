@@ -5,15 +5,17 @@ import CategorySection from "@/components/home/CategorySection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import DeliveryInfo from "@/components/home/DeliveryInfo";
 import Testimonials from "@/components/home/Testimonials";
+import { medicineData } from "@/data/medicineData"; // Import the new medicine data
 
 const HomePage = () => {
-  // Home headings translation sample (replace inside components as needed for real i18n)
-  // For now, this page itself remains as-is.
+  // Make the data available for components that need it
+  const featuredMedicines = medicineData.slice(0, 8); // Get first 8 medicines for featured section
+  
   return (
     <Layout>
       <HeroSection />
       <CategorySection />
-      <FeaturedProducts />
+      <FeaturedProducts featuredMedicines={featuredMedicines} />
       <DeliveryInfo />
       <Testimonials />
     </Layout>
