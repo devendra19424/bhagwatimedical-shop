@@ -2,10 +2,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Clock, MinusCircle, PlusCircle, ShoppingCart, Shield, Star } from "lucide-react";
+import { Clock, MinusCircle, PlusCircle, ShoppingCart, Shield, Star, Heart } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Check, AlertCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 interface ProductInfoProps {
   name: string;
@@ -35,41 +37,91 @@ export function ProductInfo({
   onQuantityChange,
 }: ProductInfoProps) {
   const { t } = useLanguage();
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 }
+  };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border border-neutral-100">
-      <div className="mb-6">
-        <div className="flex items-center gap-2 mb-3">
-          <Badge className="bg-primary/10 text-primary hover:bg-primary/20 border-none">{category}</Badge>
-          {inStock ? (
-            <Badge variant="outline" className="text-green-600 border-green-200 bg-green-50">
-              <Check className="h-3 w-3 mr-1" />
-              {t("inStock")}
-            </Badge>
-          ) : (
-            <Badge variant="outline" className="text-red-600 border-red-200 bg-red-50">
-              <AlertCircle className="h-3 w-3 mr-1" />
-              {t("outOfStock")}
-            </Badge>
-          )}
+    <motion.div 
+      className="bg-white p-6 rounded-xl shadow-md border border-neutral-100"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <div className="mb-6 space-y-4">
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          <motion.div variants={itemVariants}>
+            <Badge className="bg-primary/10 text-primary hover:bg-primary/20 border-none">{category}</Badge>
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            {inStock ? (
+              <Badge variant="outline" className="text-green-600 border-green-200 bg-green-50">
+                <Check className="h-3 w-3 mr-1" />
+                {t("inStock")}
+              </Badge>
+            ) : (
+              <Badge variant="outline" className="text-red-600 border-red-200 bg-red-50">
+                <AlertCircle className="h-3 w-3 mr-1" />
+                {t("outOfStock")}
+              </Badge>
+            )}
+          </motion.div>
         </div>
 
-        <h1 className="text-3xl font-bold mb-2 text-neutral-800">{name}</h1>
+        <motion.h1 
+          className="text-3xl font-bold mb-2 text-neutral-800 relative"
+          variants={itemVariants}
+        >
+          {name}
+          <span className="absolute -top-2 -right-2 text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">Best Seller</span>
+        </motion.h1>
         
-        <div className="flex items-center gap-2 mb-3">
+        <motion.div className="flex items-center gap-2 mb-3" variants={itemVariants}>
           <div className="flex">
             {[1, 2, 3, 4, 5].map(star => (
               <Star key={star} className="h-4 w-4 fill-amber-400 text-amber-400" />
             ))}
           </div>
           <span className="text-sm text-neutral-500">4.8 (120 {t("reviews")})</span>
-        </div>
+        </motion.div>
         
-        <p className="text-2xl font-bold mb-4 text-primary">₹{price.toFixed(2)}</p>
-        <p className="text-neutral-700 mb-6 leading-relaxed">{description}</p>
+        <motion.p 
+          className="text-2xl font-bold mb-4 text-primary bg-clip-text"
+          variants={itemVariants}
+        >
+          ₹{price.toFixed(2)}
+          <span className="text-sm text-neutral-500 line-through ml-2">₹{(price * 1.2).toFixed(2)}</span>
+          <span className="text-sm text-green-600 ml-2">20% OFF</span>
+        </motion.p>
 
-        <div className="flex items-center gap-3 mb-6">
-          <div className="flex items-center border rounded-md border-neutral-200">
+        <motion.p 
+          className="text-neutral-700 mb-6 leading-relaxed text-sm md:text-base"
+          variants={itemVariants}
+        >
+          {description}
+        </motion.p>
+
+        <motion.div 
+          className="flex flex-wrap items-center gap-3 mb-6"
+          variants={itemVariants}
+        >
+          <div className="flex items-center border rounded-md border-neutral-200 bg-white shadow-sm">
             <Button
               variant="ghost"
               size="sm"
@@ -89,13 +141,28 @@ export function ProductInfo({
               <PlusCircle className="h-4 w-4" />
             </Button>
           </div>
-          <Button className="flex-1 gap-2 py-6 bg-primary hover:bg-primary/90 text-white">
+          
+          <Button 
+            className="flex-1 gap-2 py-6 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white shadow-md hover:shadow-lg transition-all"
+          >
             <ShoppingCart className="h-4 w-4" />
             {t("addToCart")}
           </Button>
-        </div>
+          
+          <Button
+            variant="outline"
+            size="icon"
+            className={`h-12 w-12 rounded-full border-neutral-200 ${isFavorite ? 'text-red-500 border-red-200' : 'text-neutral-400'}`}
+            onClick={() => setIsFavorite(!isFavorite)}
+          >
+            <Heart className={`h-5 w-5 ${isFavorite ? 'fill-red-500' : ''}`} />
+          </Button>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6"
+          variants={itemVariants}
+        >
           <Alert className="bg-blue-50 border border-blue-200 text-blue-800">
             <Clock className="h-4 w-4 text-blue-600" />
             <AlertTitle className="text-blue-800 font-medium">{t("fastDelivery")}</AlertTitle>
@@ -111,45 +178,62 @@ export function ProductInfo({
               {t("genuineDescription")}
             </AlertDescription>
           </Alert>
-        </div>
+        </motion.div>
       </div>
 
-      <Tabs defaultValue="uses" className="border rounded-lg border-neutral-200 overflow-hidden">
-        <TabsList className="w-full bg-neutral-50 p-0 border-b border-neutral-200">
-          <TabsTrigger value="uses" className="flex-1 py-3 data-[state=active]:bg-white data-[state=active]:shadow-none rounded-none border-r border-neutral-200">
-            {t("uses")}
-          </TabsTrigger>
-          <TabsTrigger value="dosage" className="flex-1 py-3 data-[state=active]:bg-white data-[state=active]:shadow-none rounded-none border-r border-neutral-200">
-            {t("dosage")}
-          </TabsTrigger>
-          <TabsTrigger value="side-effects" className="flex-1 py-3 data-[state=active]:bg-white data-[state=active]:shadow-none rounded-none">
-            {t("sideEffects")}
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="uses" className="p-4 bg-white m-0">
-          <ul className="space-y-3">
-            {uses.map((use, index) => (
-              <li key={index} className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-green-600 shrink-0 mt-0.5" />
-                <span className="text-neutral-700">{use}</span>
-              </li>
-            ))}
-          </ul>
-        </TabsContent>
-        <TabsContent value="dosage" className="p-4 bg-white m-0 text-neutral-700 leading-relaxed">
-          <p>{usageInstructions}</p>
-        </TabsContent>
-        <TabsContent value="side-effects" className="p-4 bg-white m-0">
-          <ul className="space-y-3">
-            {sideEffects.map((effect, index) => (
-              <li key={index} className="flex items-start gap-2">
-                <AlertCircle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
-                <span className="text-neutral-700">{effect}</span>
-              </li>
-            ))}
-          </ul>
-        </TabsContent>
-      </Tabs>
-    </div>
+      <motion.div variants={itemVariants}>
+        <Tabs defaultValue="uses" className="border rounded-xl border-neutral-200 overflow-hidden shadow-sm">
+          <TabsList className="w-full bg-neutral-50 p-0 border-b border-neutral-200">
+            <TabsTrigger value="uses" className="flex-1 py-3 data-[state=active]:bg-white data-[state=active]:shadow-none rounded-none border-r border-neutral-200">
+              {t("uses")}
+            </TabsTrigger>
+            <TabsTrigger value="dosage" className="flex-1 py-3 data-[state=active]:bg-white data-[state=active]:shadow-none rounded-none border-r border-neutral-200">
+              {t("dosage")}
+            </TabsTrigger>
+            <TabsTrigger value="side-effects" className="flex-1 py-3 data-[state=active]:bg-white data-[state=active]:shadow-none rounded-none">
+              {t("sideEffects")}
+            </TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="uses" className="p-4 bg-white m-0">
+            <ul className="space-y-3">
+              {uses.map((use, index) => (
+                <motion.li 
+                  key={index} 
+                  className="flex items-start gap-2"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Check className="h-5 w-5 text-green-600 shrink-0 mt-0.5" />
+                  <span className="text-neutral-700">{use}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </TabsContent>
+          
+          <TabsContent value="dosage" className="p-4 bg-white m-0 text-neutral-700 leading-relaxed">
+            <p>{usageInstructions}</p>
+          </TabsContent>
+          
+          <TabsContent value="side-effects" className="p-4 bg-white m-0">
+            <ul className="space-y-3">
+              {sideEffects.map((effect, index) => (
+                <motion.li 
+                  key={index} 
+                  className="flex items-start gap-2"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <AlertCircle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
+                  <span className="text-neutral-700">{effect}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </TabsContent>
+        </Tabs>
+      </motion.div>
+    </motion.div>
   );
 }
