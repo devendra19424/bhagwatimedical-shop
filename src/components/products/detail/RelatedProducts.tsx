@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface RelatedProduct {
-  id: number;
+  id: string; // Changed from number to string to match the actual data type
   name: string;
   imageUrl: string;
   price: number;

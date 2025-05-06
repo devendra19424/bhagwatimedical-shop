@@ -86,7 +86,7 @@ export const products = [
 // Related products data
 export const relatedProducts = [
   {
-    id: 2,
+    id: "2", // Changed from number to string to match the actual data type
     name_en: "Multivitamin",
     name_hi: "मल्टीविटामिन",
     imageUrl: "https://images.unsplash.com/photo-1550572017-edd951b55104?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
@@ -97,7 +97,7 @@ export const relatedProducts = [
     category_hi: "विटामिन्स",
   },
   {
-    id: 5,
+    id: "5", // Changed from number to string to match the actual data type
     name_en: "Cough Syrup",
     name_hi: "कफ सिरप",
     imageUrl: "https://images.unsplash.com/photo-1603807008857-ad66b70431e2?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
@@ -108,7 +108,7 @@ export const relatedProducts = [
     category_hi: "कफ और सर्दी",
   },
   {
-    id: 8,
+    id: "8", // Changed from number to string to match the actual data type
     name_en: "Protein Powder",
     name_hi: "प्रोटीन पाउडर",
     imageUrl: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
