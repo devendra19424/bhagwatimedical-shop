@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { CartProvider } from "@/context/CartContext";
 import { HelmetProvider } from "react-helmet-async";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
@@ -34,36 +35,38 @@ const App = () => (
     <HelmetProvider>
       <TooltipProvider>
         <LanguageProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              
-              {/* Auth Routes */}
-              <Route path="/login" element={<LoginPage />} />
-              
-              {/* User Routes */}
-              <Route path="/profile" element={<ProfilePage />} />
-              
-              {/* Product Routes */}
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/products/:id" element={<ProductDetailPage />} />
-              <Route path="/categories" element={<CategoriesPage />} />
-              
-              {/* Cart and Checkout */}
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
-              <Route path="/tracking" element={<OrderTrackingPage />} />
-              
-              {/* Admin Routes */}
-              <Route path="/admin" element={<AdminDashboard />} />
-              <Route path="/admin/products" element={<ProductManagement />} />
-              
-              {/* 404 Route */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+          <CartProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                
+                {/* Auth Routes */}
+                <Route path="/login" element={<LoginPage />} />
+                
+                {/* User Routes */}
+                <Route path="/profile" element={<ProfilePage />} />
+                
+                {/* Product Routes */}
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/products/:id" element={<ProductDetailPage />} />
+                <Route path="/categories" element={<CategoriesPage />} />
+                
+                {/* Cart and Checkout */}
+                <Route path="/cart" element={<CartPage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
+                <Route path="/tracking" element={<OrderTrackingPage />} />
+                
+                {/* Admin Routes */}
+                <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/admin/products" element={<ProductManagement />} />
+                
+                {/* 404 Route */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </CartProvider>
         </LanguageProvider>
       </TooltipProvider>
     </HelmetProvider>

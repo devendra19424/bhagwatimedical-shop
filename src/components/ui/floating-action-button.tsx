@@ -2,12 +2,12 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
-  ChatCircle,
+  MessageCircle,
   FilePlus,
   X,
   Plus,
   Pill,
-  Scan,
+  ScanSearch,
   CalendarClock,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -25,7 +25,7 @@ export function FloatingActionButton({ className }: FloatingActionButtonProps) {
 
   const fabActions = [
     { 
-      icon: <ChatCircle className="h-4 w-4" />, 
+      icon: <MessageCircle className="h-4 w-4" />, 
       label: t("chatWithPharmacist"), 
       color: "bg-blue-500",
       onClick: () => console.log("Chat with pharmacist") 
@@ -37,7 +37,7 @@ export function FloatingActionButton({ className }: FloatingActionButtonProps) {
       onClick: () => console.log("Upload prescription") 
     },
     { 
-      icon: <Scan className="h-4 w-4" />, 
+      icon: <ScanSearch className="h-4 w-4" />, 
       label: t("scanPrescription"), 
       color: "bg-purple-500",
       onClick: () => console.log("Scan prescription") 

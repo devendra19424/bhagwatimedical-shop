@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { useLanguage } from "@/context/LanguageContext";
+import { useCart } from "@/context/CartContext";
+import { toast } from "@/hooks/use-toast";
 import { medicineData } from "@/data/medicineData";
 import { formatProductData, formatRelatedProducts } from "@/utils/productUtils";
 import { ProductNotFound } from "@/components/products/detail/ProductNotFound";
@@ -13,6 +15,7 @@ const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const [quantity, setQuantity] = useState(1);
   const { lang } = useLanguage();
+  const { addToCart, cartItems } = useCart();
   
   // Get all medicines from medicineData
   const allProducts = medicineData.map(medicine => ({
@@ -65,6 +68,29 @@ const ProductDetailPage = () => {
       category: p[`category_${lang}`],
     }));
 
+  // Handle add to cart button click
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id,
+      name: productData.name,
+      imageUrl: product.imageUrl,
+      price: product.price,
+      quantity: quantity,
+      category: productData.category,
+    });
+    
+    toast({
+      title: lang === "en" ? "Product added to cart!" : "उत्पाद कार्ट में जोड़ा गया!",
+      description: lang === "en" 
+        ? `${quantity} x ${productData.name} added to your cart.` 
+        : `${quantity} x ${productData.name} आपके कार्ट में जोड़ा गया।`,
+      variant: "default",
+    });
+  };
+
+  // Check if this product is already in cart
+  const isInCart = cartItems.some(item => item.id === product.id);
+
   return (
     <Layout>
       <ProductSeo productData={productData} />
@@ -74,6 +100,8 @@ const ProductDetailPage = () => {
         quantity={quantity}
         setQuantity={setQuantity}
         relatedProducts={relatedProducts}
+        onAddToCart={handleAddToCart}
+        isInCart={isInCart}
       />
     </Layout>
   );

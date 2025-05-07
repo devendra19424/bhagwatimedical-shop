@@ -7,6 +7,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { FloatingActionButton } from "@/components/ui/floating-action-button";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useLocation } from "react-router-dom";
 
 interface LayoutProps {
   children: ReactNode;
@@ -14,6 +15,13 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const isMobile = useIsMobile();
+  const location = useLocation();
+  
+  // Don't show FAB on specific pages
+  const hideFloatingButton = [
+    '/cart',
+    '/checkout',
+  ].includes(location.pathname);
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-blue-50/30 to-white">
@@ -29,7 +37,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Footer />
       <Toaster />
       <Sonner />
-      {isMobile && <FloatingActionButton />}
+      {isMobile && !hideFloatingButton && <FloatingActionButton />}
     </div>
   );
 };

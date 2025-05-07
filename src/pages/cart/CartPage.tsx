@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -7,54 +6,16 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Trash, MinusCircle, PlusCircle, ShoppingCart } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
-
-// Sample cart items
-const initialCartItems = [
-  {
-    id: 1,
-    name: "पैरासिटामोल",
-    imageUrl: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?h=200&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=300",
-    price: 25.99,
-    quantity: 2,
-    category: "पेन किलर",
-  },
-  {
-    id: 2,
-    name: "मल्टीविटामिन",
-    imageUrl: "https://images.unsplash.com/photo-1550572017-edd951b55104?h=200&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=300",
-    price: 299.99,
-    quantity: 1,
-    category: "विटामिन्स",
-  },
-];
+import { useCart } from "@/context/CartContext";
+import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState(initialCartItems);
+  const { cartItems, updateQuantity, removeFromCart, subtotal } = useCart();
+  const { t } = useLanguage();
   const [couponCode, setCouponCode] = useState("");
   const [isCouponApplied, setIsCouponApplied] = useState(false);
   const [couponDiscount, setCouponDiscount] = useState(0);
-  
-  // Calculate subtotal
-  const subtotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-  
-  // Update item quantity
-  const updateQuantity = (id: number, newQuantity: number) => {
-    if (newQuantity < 1) return;
-    
-    setCartItems(
-      cartItems.map((item) =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      )
-    );
-  };
-  
-  // Remove item from cart
-  const removeItem = (id: number) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
   
   // Apply coupon code
   const applyCoupon = () => {
@@ -149,7 +110,7 @@ const CartPage = () => {
                               variant="ghost"
                               size="sm"
                               className="text-red-500 hover:text-red-700 hover:bg-red-50"
-                              onClick={() => removeItem(item.id)}
+                              onClick={() => removeFromCart(item.id)}
                             >
                               <Trash className="h-4 w-4 mr-1" />
                               हटाएं

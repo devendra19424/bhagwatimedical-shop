@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { useLanguage } from "@/context/LanguageContext";
+import { useCart } from "@/context/CartContext";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
@@ -12,6 +13,7 @@ import { motion } from "framer-motion";
 
 const Header = () => {
   const { lang, toggleLanguage, t } = useLanguage();
+  const { totalItems } = useCart();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
@@ -192,13 +194,16 @@ const Header = () => {
           <Link to="/cart">
             <Button variant="ghost" size="icon" className="relative">
               <ShoppingCart className="h-5 w-5" />
-              <motion.span 
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] text-primary-foreground"
-              >
-                0
-              </motion.span>
+              {totalItems > 0 && (
+                <motion.span 
+                  key={totalItems} // Add key to trigger animation when totalItems changes
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] text-primary-foreground"
+                >
+                  {totalItems}
+                </motion.span>
+              )}
             </Button>
           </Link>
 
