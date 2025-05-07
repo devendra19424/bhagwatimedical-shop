@@ -92,7 +92,7 @@ const ProductCard = ({
           
           {stock > 0 && stock <= 5 && (
             <div className="absolute bottom-2 left-2 bg-amber-500/90 text-white text-xs py-1 px-2 rounded-full">
-              {t("onlyLeft", { count: stock })}
+              {t("onlyLeft").replace("{count}", stock.toString())}
             </div>
           )}
           

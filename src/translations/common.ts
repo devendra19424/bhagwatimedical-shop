@@ -27,5 +27,17 @@ export const commonTranslations = {
   returnToHome: {
     en: "Return to Home",
     hi: "होम पेज पर वापस जाएं"
+  },
+  newsletter: {
+    en: "Newsletter",
+    hi: "न्यूज़लेटर"
+  },
+  featured: {
+    en: "Featured Products",
+    hi: "विशेष उत्पाद"
+  },
+  quickLinks: {
+    en: "Quick Links",
+    hi: "त्वरित लिंक"
   }
 };
