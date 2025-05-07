@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ShoppingCart, Heart, Star } from "lucide-react";
+import { ShoppingCart, Heart, Star, Eye, BarChartHorizontal } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { toast } from "@/components/ui/use-toast";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface ProductCardProps {
   id: string;
@@ -59,6 +60,28 @@ const ProductCard = ({
     });
   };
 
+  const handleCompare = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    toast({
+      title: "Added to comparison",
+      description: `${name} added to product comparison`,
+      duration: 3000,
+    });
+  };
+
+  const handleQuickView = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    toast({
+      title: "Quick view",
+      description: `Quick view for ${name}`,
+      duration: 3000,
+    });
+  };
+
   return (
     <Card 
       className="overflow-hidden h-full flex flex-col border-neutral-200 transition-all duration-300 hover:shadow-lg hover:border-blue-200 rounded-xl"
@@ -89,6 +112,51 @@ const ProductCard = ({
           >
             <Heart className="h-4 w-4" fill={isFavorite ? "currentColor" : "none"} />
           </motion.button>
+          
+          {!isMobile && isHovered && (
+            <motion.div 
+              className="absolute bottom-2 left-0 right-0 flex justify-center gap-2 px-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <motion.button
+                      className="h-8 w-8 rounded-full bg-white/90 text-neutral-600 shadow-sm flex items-center justify-center hover:bg-primary hover:text-white"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={handleQuickView}
+                    >
+                      <Eye className="h-4 w-4" />
+                    </motion.button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Quick view</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <motion.button
+                      className="h-8 w-8 rounded-full bg-white/90 text-neutral-600 shadow-sm flex items-center justify-center hover:bg-primary hover:text-white"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={handleCompare}
+                    >
+                      <BarChartHorizontal className="h-4 w-4" />
+                    </motion.button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Compare</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </motion.div>
+          )}
           
           {stock > 0 && stock <= 5 && (
             <div className="absolute bottom-2 left-2 bg-amber-500/90 text-white text-xs py-1 px-2 rounded-full">
