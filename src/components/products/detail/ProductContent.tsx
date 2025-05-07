@@ -10,6 +10,8 @@ interface ProductContentProps {
   quantity: number;
   setQuantity: (quantity: number) => void;
   relatedProducts: RelatedProduct[];
+  isInCart?: boolean;
+  onAddToCart?: () => void;
 }
 
 export function ProductContent({ 
@@ -17,7 +19,9 @@ export function ProductContent({
   productData, 
   quantity, 
   setQuantity, 
-  relatedProducts 
+  relatedProducts,
+  isInCart,
+  onAddToCart
 }: ProductContentProps) {
   return (
     <div className="container py-8">

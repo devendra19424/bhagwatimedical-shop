@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
@@ -9,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "@/components/ui/use-toast";
-import { Bell, AlarmClock, Calendar, Plus, Trash, Edit, CheckCircle2 } from "lucide-react";
+import { Bell, AlarmClock, Calendar, Plus, Trash, Edit, CheckCircle2, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -173,212 +172,211 @@ const MedicineReminder = () => {
             <TabsTrigger value="tomorrow" className="text-xs">Tomorrow</TabsTrigger>
             <TabsTrigger value="all" className="text-xs">All</TabsTrigger>
           </TabsList>
-        </Tabs>
-      </CardHeader>
-      
-      <CardContent className="p-4">
-        {isAdding && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="mb-6 p-4 bg-blue-50/50 rounded-lg border border-blue-100"
-          >
-            <h3 className="text-sm font-semibold mb-3">Add New Reminder</h3>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="medicineName">Medicine Name</Label>
-                <Input 
-                  id="medicineName"
-                  name="medicineName"
-                  value={formValues.medicineName}
-                  onChange={handleInputChange}
-                  placeholder="Enter medicine name"
-                  className="text-sm"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="time">Time</Label>
-                <Input 
-                  id="time"
-                  name="time"
-                  type="time"
-                  value={formValues.time}
-                  onChange={handleInputChange}
-                  className="text-sm"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="frequency">Frequency</Label>
-                <Select
-                  value={formValues.frequency}
-                  onValueChange={(value) => handleSelectChange("frequency", value)}
-                >
-                  <SelectTrigger className="text-sm">
-                    <SelectValue placeholder="Select frequency" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="daily">Daily</SelectItem>
-                    <SelectItem value="twice_daily">Twice Daily</SelectItem>
-                    <SelectItem value="weekly">Weekly</SelectItem>
-                    <SelectItem value="monthly">Monthly</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="dosage">Dosage</Label>
-                <Input 
-                  id="dosage"
-                  name="dosage"
-                  value={formValues.dosage}
-                  onChange={handleInputChange}
-                  placeholder="e.g., 1 tablet"
-                  className="text-sm"
-                />
-              </div>
-            </div>
-            <div className="mt-4 flex justify-end gap-2">
-              <Button variant="outline" size="sm" onClick={() => setIsAdding(false)}>Cancel</Button>
-              <Button size="sm" onClick={handleAddReminder}>Add Reminder</Button>
-            </div>
-          </motion.div>
-        )}
         
-        <TabsContent value="today" className="mt-0">
-          {reminders.length === 0 ? (
-            <div className="text-center py-8">
-              <p className="text-neutral-500 text-sm">No reminders for today</p>
-            </div>
-          ) : (
-            <div className="space-y-3">
-              {reminders.map((reminder) => (
-                <motion.div
-                  key={reminder.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`p-3 rounded-lg border flex justify-between items-center ${
-                    reminder.completed 
-                      ? "bg-green-50/50 border-green-100" 
-                      : "bg-white border-neutral-200"
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={() => handleToggleComplete(reminder.id)}
-                      className={`h-6 w-6 rounded-full flex items-center justify-center ${
+          <CardContent className="p-4">
+            {isAdding && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="mb-6 p-4 bg-blue-50/50 rounded-lg border border-blue-100"
+              >
+                <h3 className="text-sm font-semibold mb-3">Add New Reminder</h3>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="medicineName">Medicine Name</Label>
+                    <Input 
+                      id="medicineName"
+                      name="medicineName"
+                      value={formValues.medicineName}
+                      onChange={handleInputChange}
+                      placeholder="Enter medicine name"
+                      className="text-sm"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="time">Time</Label>
+                    <Input 
+                      id="time"
+                      name="time"
+                      type="time"
+                      value={formValues.time}
+                      onChange={handleInputChange}
+                      className="text-sm"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="frequency">Frequency</Label>
+                    <Select
+                      value={formValues.frequency}
+                      onValueChange={(value) => handleSelectChange("frequency", value)}
+                    >
+                      <SelectTrigger className="text-sm">
+                        <SelectValue placeholder="Select frequency" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="daily">Daily</SelectItem>
+                        <SelectItem value="twice_daily">Twice Daily</SelectItem>
+                        <SelectItem value="weekly">Weekly</SelectItem>
+                        <SelectItem value="monthly">Monthly</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="dosage">Dosage</Label>
+                    <Input 
+                      id="dosage"
+                      name="dosage"
+                      value={formValues.dosage}
+                      onChange={handleInputChange}
+                      placeholder="e.g., 1 tablet"
+                      className="text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="mt-4 flex justify-end gap-2">
+                  <Button variant="outline" size="sm" onClick={() => setIsAdding(false)}>Cancel</Button>
+                  <Button size="sm" onClick={handleAddReminder}>Add Reminder</Button>
+                </div>
+              </motion.div>
+            )}
+            
+            <TabsContent value="today" className="mt-0">
+              {reminders.length === 0 ? (
+                <div className="text-center py-8">
+                  <p className="text-neutral-500 text-sm">No reminders for today</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {reminders.map((reminder) => (
+                    <motion.div
+                      key={reminder.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`p-3 rounded-lg border flex justify-between items-center ${
                         reminder.completed 
-                          ? "bg-green-100 text-green-600" 
-                          : "bg-neutral-100 text-neutral-400"
+                          ? "bg-green-50/50 border-green-100" 
+                          : "bg-white border-neutral-200"
                       }`}
                     >
-                      <CheckCircle2 className="h-4 w-4" />
-                    </button>
-                    <div>
-                      <h4 className={`font-medium text-sm ${
-                        reminder.completed ? "line-through text-neutral-500" : ""
-                      }`}>
-                        {reminder.medicineName}
-                      </h4>
-                      <div className="flex text-xs text-neutral-500 items-center gap-2">
-                        <span className="flex items-center gap-1">
-                          <AlarmClock className="h-3 w-3" />
-                          {reminder.time}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          {reminder.frequency}
-                        </span>
-                        <span>{reminder.dosage}</span>
+                      <div className="flex items-center gap-3">
+                        <button
+                          onClick={() => handleToggleComplete(reminder.id)}
+                          className={`h-6 w-6 rounded-full flex items-center justify-center ${
+                            reminder.completed 
+                              ? "bg-green-100 text-green-600" 
+                              : "bg-neutral-100 text-neutral-400"
+                          }`}
+                        >
+                          <CheckCircle2 className="h-4 w-4" />
+                        </button>
+                        <div>
+                          <h4 className={`font-medium text-sm ${
+                            reminder.completed ? "line-through text-neutral-500" : ""
+                          }`}>
+                            {reminder.medicineName}
+                          </h4>
+                          <div className="flex text-xs text-neutral-500 items-center gap-2">
+                            <span className="flex items-center gap-1">
+                              <AlarmClock className="h-3 w-3" />
+                              {reminder.time}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Calendar className="h-3 w-3" />
+                              {reminder.frequency}
+                            </span>
+                            <span>{reminder.dosage}</span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-1">
-                    <div className="flex items-center gap-1 mr-2">
-                      <Switch
-                        checked={reminder.active}
-                        onCheckedChange={() => handleToggleActive(reminder.id)}
-                        size="sm"
-                        className="data-[state=checked]:bg-primary"
-                      />
-                      <span className="text-xs text-neutral-500">
-                        {reminder.active ? "On" : "Off"}
-                      </span>
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-7 w-7 p-0 rounded-full"
-                      onClick={() => handleDelete(reminder.id)}
-                    >
-                      <Trash className="h-3 w-3 text-neutral-500" />
-                    </Button>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
-        </TabsContent>
-        
-        <TabsContent value="tomorrow" className="mt-0">
-          <div className="text-center py-8">
-            <p className="text-neutral-500 text-sm">No reminders for tomorrow</p>
-          </div>
-        </TabsContent>
-        
-        <TabsContent value="all" className="mt-0">
-          {reminders.length === 0 ? (
-            <div className="text-center py-8">
-              <p className="text-neutral-500 text-sm">No reminders set</p>
-            </div>
-          ) : (
-            <div className="space-y-3">
-              {reminders.map((reminder) => (
-                <motion.div
-                  key={reminder.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="p-3 rounded-lg border border-neutral-200 bg-white flex justify-between items-center"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="h-6 w-6 rounded-full bg-neutral-100 flex items-center justify-center">
-                      <Bell className="h-4 w-4 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-sm">{reminder.medicineName}</h4>
-                      <div className="flex text-xs text-neutral-500 items-center gap-2">
-                        <span className="flex items-center gap-1">
-                          <AlarmClock className="h-3 w-3" />
-                          {reminder.time}
-                        </span>
-                        <span>{reminder.dosage}</span>
+                      
+                      <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-1 mr-2">
+                          <Switch
+                            checked={reminder.active}
+                            onCheckedChange={() => handleToggleActive(reminder.id)}
+                            className="data-[state=checked]:bg-primary"
+                          />
+                          <span className="text-xs text-neutral-500">
+                            {reminder.active ? "On" : "Off"}
+                          </span>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-7 w-7 p-0 rounded-full"
+                          onClick={() => handleDelete(reminder.id)}
+                        >
+                          <Trash className="h-3 w-3 text-neutral-500" />
+                        </Button>
                       </div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-1">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-7 w-7 p-0 rounded-full"
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+            </TabsContent>
+            
+            <TabsContent value="tomorrow" className="mt-0">
+              <div className="text-center py-8">
+                <p className="text-neutral-500 text-sm">No reminders for tomorrow</p>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="all" className="mt-0">
+              {reminders.length === 0 ? (
+                <div className="text-center py-8">
+                  <p className="text-neutral-500 text-sm">No reminders set</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {reminders.map((reminder) => (
+                    <motion.div
+                      key={reminder.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-3 rounded-lg border border-neutral-200 bg-white flex justify-between items-center"
                     >
-                      <Edit className="h-3 w-3 text-neutral-500" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-7 w-7 p-0 rounded-full"
-                      onClick={() => handleDelete(reminder.id)}
-                    >
-                      <Trash className="h-3 w-3 text-neutral-500" />
-                    </Button>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
-        </TabsContent>
-      </CardContent>
+                      <div className="flex items-center gap-3">
+                        <div className="h-6 w-6 rounded-full bg-neutral-100 flex items-center justify-center">
+                          <Bell className="h-4 w-4 text-primary" />
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-sm">{reminder.medicineName}</h4>
+                          <div className="flex text-xs text-neutral-500 items-center gap-2">
+                            <span className="flex items-center gap-1">
+                              <AlarmClock className="h-3 w-3" />
+                              {reminder.time}
+                            </span>
+                            <span>{reminder.dosage}</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center gap-1">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-7 w-7 p-0 rounded-full"
+                        >
+                          <Edit className="h-3 w-3 text-neutral-500" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-7 w-7 p-0 rounded-full"
+                          onClick={() => handleDelete(reminder.id)}
+                        >
+                          <Trash className="h-3 w-3 text-neutral-500" />
+                        </Button>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+            </TabsContent>
+          </CardContent>
+        </Tabs>
+      </CardHeader>
     </Card>
   );
 };
