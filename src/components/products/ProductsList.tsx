@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import ProductCard from "./ProductCard";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Product {
   id: number;
@@ -19,18 +20,46 @@ interface ProductsListProps {
 
 export function ProductsList({ products }: ProductsListProps) {
   const { t } = useLanguage();
+  const isMobile = useIsMobile();
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
   if (products.length === 0) {
     return (
-      <div className="text-center py-12 px-4 bg-neutral-50 rounded-lg border border-neutral-200">
-        <h3 className="text-lg font-medium mb-2 text-neutral-700">{t("noResults")}</h3>
-        <p className="text-gray-600 text-sm md:text-base">{t("adjustSearch")}</p>
+      <div className="text-center py-12 px-4 bg-gradient-to-br from-gray-50 to-blue-50/30 rounded-xl border border-neutral-200 shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
+          className="space-y-3"
+        >
+          <h3 className="text-lg md:text-xl font-semibold text-neutral-700">{t("noResults")}</h3>
+          <p className="text-gray-600 text-sm md:text-base max-w-md mx-auto">{t("adjustSearch")}</p>
+        </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+    <motion.div
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className={`grid ${
+        isMobile 
+          ? "grid-cols-1 gap-4" 
+          : "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+      }`}
+    >
       {products.map((product, index) => (
         <motion.div
           key={product.id}
@@ -41,6 +70,7 @@ export function ProductsList({ products }: ProductsListProps) {
             delay: index * 0.05,
             ease: "easeOut"
           }}
+          className="h-full"
         >
           <ProductCard
             id={product.id.toString()}
@@ -53,6 +83,6 @@ export function ProductsList({ products }: ProductsListProps) {
           />
         </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }
