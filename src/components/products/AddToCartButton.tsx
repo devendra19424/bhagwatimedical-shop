@@ -18,7 +18,7 @@ interface AddToCartButtonProps {
 
 const AddToCartButton = ({ productId, name, price, imageUrl, category, quantity = 1 }: AddToCartButtonProps) => {
   const { addToCart, cartItems } = useCart();
-  const { lang } = useLanguage();
+  const { t } = useLanguage();
   const isInCart = cartItems.some(item => item.id === productId);
   const [isAdding, setIsAdding] = useState(false);
 
@@ -38,10 +38,8 @@ const AddToCartButton = ({ productId, name, price, imageUrl, category, quantity 
       });
       
       toast({
-        title: lang === "en" ? "Product added to cart!" : "उत्पाद कार्ट में जोड़ा गया!",
-        description: lang === "en" 
-          ? `${quantity > 1 ? `${quantity} x ` : ''}${name} added to your cart.` 
-          : `${quantity > 1 ? `${quantity} x ` : ''}${name} आपके कार्ट में जोड़ा गया।`,
+        title: t("productAddedToCart"),
+        description: t("productAddedDescription").replace("{quantity}", quantity > 1 ? `${quantity} x ` : '').replace("{name}", name),
         variant: "default",
       });
       
@@ -63,7 +61,7 @@ const AddToCartButton = ({ productId, name, price, imageUrl, category, quantity 
           animate={{ scale: 1 }}
           className="flex items-center"
         >
-          <span className="mr-2">Adding...</span>
+          <span className="mr-2">{t("adding")}</span>
           <ShoppingCart className="h-4 w-4" />
         </motion.div>
       ) : isInCart ? (
@@ -72,12 +70,12 @@ const AddToCartButton = ({ productId, name, price, imageUrl, category, quantity 
           animate={{ scale: 1 }}
           className="flex items-center"
         >
-          <span className="mr-2">Added to Cart</span>
+          <span className="mr-2">{t("addedToCart")}</span>
           <Check className="h-4 w-4" />
         </motion.div>
       ) : (
         <motion.div className="flex items-center">
-          <span className="mr-2">{lang === "en" ? "Add to Cart" : "कार्ट में जोड़ें"}</span>
+          <span className="mr-2">{t("addToCart")}</span>
           <ShoppingCart className="h-4 w-4" />
         </motion.div>
       )}

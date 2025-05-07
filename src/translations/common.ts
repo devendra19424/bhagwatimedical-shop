@@ -1,4 +1,3 @@
-
 export const commonTranslations = {
   storeName: {
     en: "Bhagwati Medical",
@@ -91,5 +90,69 @@ export const commonTranslations = {
   yourEmail: {
     en: "Your Email",
     hi: "आपका ईमेल"
-  }
+  },
+  yourCart: {
+    en: "Your Cart",
+    hi: "आपका कार्ट",
+  },
+  cartEmpty: {
+    en: "Your cart is empty",
+    hi: "आपका कार्ट खाली है",
+  },
+  cartEmptyDescription: {
+    en: "You don't have any items in your cart yet. Start shopping by visiting our products section.",
+    hi: "आपके कार्ट में अभी कोई आइटम नहीं है। खरीदारी शुरू करने के लिए हमारे प्रोडक्ट सेक्शन पर जाएं।",
+  },
+  continueShopping: {
+    en: "Continue Shopping",
+    hi: "शॉपिंग जारी रखें",
+  },
+  remove: {
+    en: "Remove",
+    hi: "हटाएं",
+  },
+  checkout: {
+    en: "Checkout",
+    hi: "चेकआउट करें",
+  },
+  orderSummary: {
+    en: "Order Summary",
+    hi: "ऑर्डर सारांश",
+  },
+  couponCode: {
+    en: "Coupon Code",
+    hi: "कूपन कोड",
+  },
+  couponDiscount: {
+    en: "Coupon Discount",
+    hi: "कूपन डिस्काउंट",
+  },
+  couponApplied: {
+    en: "Coupon successfully applied!",
+    hi: "कूपन सफलतापूर्वक लागू किया गया!",
+  },
+  invalidCouponCode: {
+    en: "Invalid coupon code!",
+    hi: "अमान्य कूपन कोड!",
+  },
+  deliveryCharge: {
+    en: "Delivery Charge",
+    hi: "डिलीवरी चार्ज",
+  },
+  free: {
+    en: "Free",
+    hi: "मुफ्त",
+  },
+  apply: {
+    en: "Apply",
+    hi: "अप्लाई",
+  },
+  total: {
+    en: "Total",
+    hi: "कुल",
+  },
+  subtotal: {
+    en: "Subtotal",
+    hi: "सबटोटल",
+  },
 };

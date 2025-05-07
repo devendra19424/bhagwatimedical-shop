@@ -24,7 +24,7 @@ const CartPage = () => {
       // 10% discount
       setCouponDiscount(subtotal * 0.1);
     } else {
-      alert("अमान्य कूपन कोड!");
+      alert(t("invalidCouponCode"));
     }
   };
   
@@ -41,12 +41,12 @@ const CartPage = () => {
             <div className="mb-6 text-gray-400 flex justify-center">
               <ShoppingCart size={64} />
             </div>
-            <h1 className="text-2xl font-bold mb-4">आपका कार्ट खाली है</h1>
+            <h1 className="text-2xl font-bold mb-4">{t("cartEmpty")}</h1>
             <p className="text-gray-600 mb-8">
-              आपके कार्ट में अभी कोई आइटम नहीं है। खरीदारी शुरू करने के लिए हमारे प्रोडक्ट सेक्शन पर जाएं।
+              {t("cartEmptyDescription")}
             </p>
             <Link to="/products">
-              <Button size="lg">शॉपिंग जारी रखें</Button>
+              <Button size="lg">{t("continueShopping")}</Button>
             </Link>
           </div>
         </div>
@@ -57,7 +57,7 @@ const CartPage = () => {
   return (
     <Layout>
       <div className="container py-8">
-        <h1 className="text-2xl md:text-3xl font-bold mb-8">आपका कार्ट</h1>
+        <h1 className="text-2xl md:text-3xl font-bold mb-8">{t("yourCart")}</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Cart Items */}
@@ -113,7 +113,7 @@ const CartPage = () => {
                               onClick={() => removeFromCart(item.id)}
                             >
                               <Trash className="h-4 w-4 mr-1" />
-                              हटाएं
+                              {t("remove")}
                             </Button>
                           </div>
                         </div>
@@ -125,10 +125,10 @@ const CartPage = () => {
               </CardContent>
               <CardFooter className="flex justify-between p-6 pt-0">
                 <Link to="/products">
-                  <Button variant="outline">शॉपिंग जारी रखें</Button>
+                  <Button variant="outline">{t("continueShopping")}</Button>
                 </Link>
                 <Link to="/checkout">
-                  <Button>चेकआउट करें</Button>
+                  <Button>{t("checkout")}</Button>
                 </Link>
               </CardFooter>
             </Card>
@@ -138,49 +138,49 @@ const CartPage = () => {
           <div>
             <Card>
               <CardContent className="p-6">
-                <h2 className="text-lg font-bold mb-4">ऑर्डर सारांश</h2>
+                <h2 className="text-lg font-bold mb-4">{t("orderSummary")}</h2>
                 
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">सबटोटल</span>
+                    <span className="text-gray-600">{t("subtotal")}</span>
                     <span>₹{subtotal.toFixed(2)}</span>
                   </div>
                   
                   {isCouponApplied && (
                     <div className="flex justify-between text-green-600">
-                      <span>कूपन डिस्काउंट</span>
+                      <span>{t("couponDiscount")}</span>
                       <span>-₹{couponDiscount.toFixed(2)}</span>
                     </div>
                   )}
                   
                   <div className="flex justify-between">
-                    <span className="text-gray-600">डिलीवरी चार्ज</span>
-                    <span>{deliveryCharge === 0 ? "मुफ्त" : `₹${deliveryCharge.toFixed(2)}`}</span>
+                    <span className="text-gray-600">{t("deliveryCharge")}</span>
+                    <span>{deliveryCharge === 0 ? t("free") : `₹${deliveryCharge.toFixed(2)}`}</span>
                   </div>
                   
                   <Separator />
                   
                   <div className="flex justify-between font-bold">
-                    <span>कुल</span>
+                    <span>{t("total")}</span>
                     <span>₹{total.toFixed(2)}</span>
                   </div>
                   
                   {!isCouponApplied && (
                     <div className="flex gap-2 mt-4">
                       <Input
-                        placeholder="कूपन कोड"
+                        placeholder={t("couponCode")}
                         value={couponCode}
                         onChange={(e) => setCouponCode(e.target.value)}
                       />
                       <Button variant="outline" onClick={applyCoupon}>
-                        अप्लाई
+                        {t("apply")}
                       </Button>
                     </div>
                   )}
                   
                   {isCouponApplied && (
                     <div className="bg-green-50 text-green-800 p-2 rounded text-sm mt-2">
-                      कूपन सफलतापूर्वक लागू किया गया!
+                      {t("couponApplied")}
                     </div>
                   )}
                 </div>
@@ -188,7 +188,7 @@ const CartPage = () => {
               <CardFooter className="p-6 pt-0">
                 <Link to="/checkout" className="w-full">
                   <Button className="w-full" size="lg">
-                    चेकआउट करें
+                    {t("checkout")}
                   </Button>
                 </Link>
               </CardFooter>

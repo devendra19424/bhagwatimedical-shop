@@ -1,4 +1,3 @@
-
 export const productTranslations = {
   allProducts: {
     en: "All Products",
@@ -127,5 +126,21 @@ export const productTranslations = {
   genuineDescription: {
     en: "We ensure all products are authentic and quality-tested.",
     hi: "हम सुनिश्चित करते हैं कि सभी उत्पाद प्रामाणिक और गुणवत्ता परीक्षण किए गए हैं।"
+  },
+  productAddedToCart: {
+    en: "Product added to cart!",
+    hi: "उत्पाद कार्ट में जोड़ा गया!",
+  },
+  productAddedDescription: {
+    en: "{quantity}{name} added to your cart.",
+    hi: "{quantity}{name} आपके कार्ट में जोड़ा गया।",
+  },
+  adding: {
+    en: "Adding...",
+    hi: "जोड़ रहा है...",
+  },
+  addedToCart: {
+    en: "Added to Cart",
+    hi: "कार्ट में जोड़ा गया",
   }
 };
