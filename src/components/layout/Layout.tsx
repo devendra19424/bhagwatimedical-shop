@@ -8,6 +8,7 @@ import { FloatingActionButton } from "@/components/ui/floating-action-button";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLocation } from "react-router-dom";
+import { useCart } from "@/context/CartContext";
 
 interface LayoutProps {
   children: ReactNode;
@@ -16,6 +17,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const isMobile = useIsMobile();
   const location = useLocation();
+  const { totalItems } = useCart();
   
   // Don't show FAB on specific pages
   const hideFloatingButton = [

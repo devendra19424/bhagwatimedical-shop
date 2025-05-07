@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Check, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import AddToCartButton from "@/components/products/AddToCartButton";
 
 interface ProductInfoProps {
   name: string;
@@ -21,6 +22,10 @@ interface ProductInfoProps {
   sideEffects: string[];
   quantity: number;
   onQuantityChange: (quantity: number) => void;
+  isInCart?: boolean;
+  onAddToCart?: () => void;
+  productId: string | number;
+  imageUrl: string;
 }
 
 export function ProductInfo({
@@ -35,6 +40,10 @@ export function ProductInfo({
   sideEffects,
   quantity,
   onQuantityChange,
+  isInCart,
+  onAddToCart,
+  productId,
+  imageUrl,
 }: ProductInfoProps) {
   const { t } = useLanguage();
   const [isFavorite, setIsFavorite] = useState(false);
@@ -142,12 +151,16 @@ export function ProductInfo({
             </Button>
           </div>
           
-          <Button 
-            className="flex-1 gap-2 py-6 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white shadow-md hover:shadow-lg transition-all"
-          >
-            <ShoppingCart className="h-4 w-4" />
-            {t("addToCart")}
-          </Button>
+          <div className="flex-1">
+            <AddToCartButton 
+              productId={productId}
+              name={name}
+              price={price}
+              imageUrl={imageUrl}
+              category={category}
+              quantity={quantity}
+            />
+          </div>
           
           <Button
             variant="outline"

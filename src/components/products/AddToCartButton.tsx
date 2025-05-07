@@ -13,9 +13,10 @@ interface AddToCartButtonProps {
   price: number;
   imageUrl: string;
   category: string;
+  quantity?: number;
 }
 
-const AddToCartButton = ({ productId, name, price, imageUrl, category }: AddToCartButtonProps) => {
+const AddToCartButton = ({ productId, name, price, imageUrl, category, quantity = 1 }: AddToCartButtonProps) => {
   const { addToCart, cartItems } = useCart();
   const { lang } = useLanguage();
   const isInCart = cartItems.some(item => item.id === productId);
@@ -32,15 +33,15 @@ const AddToCartButton = ({ productId, name, price, imageUrl, category }: AddToCa
         name,
         price,
         imageUrl,
-        quantity: 1,
+        quantity: quantity,
         category
       });
       
       toast({
         title: lang === "en" ? "Product added to cart!" : "उत्पाद कार्ट में जोड़ा गया!",
         description: lang === "en" 
-          ? `${name} added to your cart.` 
-          : `${name} आपके कार्ट में जोड़ा गया।`,
+          ? `${quantity > 1 ? `${quantity} x ` : ''}${name} added to your cart.` 
+          : `${quantity > 1 ? `${quantity} x ` : ''}${name} आपके कार्ट में जोड़ा गया।`,
         variant: "default",
       });
       

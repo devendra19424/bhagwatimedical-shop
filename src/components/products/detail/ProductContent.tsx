@@ -3,6 +3,7 @@ import { Product, FormattedProductData, RelatedProduct } from "@/utils/productUt
 import { ProductImage } from "./ProductImage";
 import { ProductInfo } from "./ProductInfo";
 import { RelatedProducts } from "./RelatedProducts";
+import AddToCartButton from "@/components/products/AddToCartButton";
 
 interface ProductContentProps {
   product: Product;
@@ -39,6 +40,10 @@ export function ProductContent({
           sideEffects={productData.sideEffects}
           quantity={quantity}
           onQuantityChange={setQuantity}
+          isInCart={isInCart}
+          onAddToCart={onAddToCart}
+          productId={product.id}
+          imageUrl={product.imageUrl}
         />
       </div>
       <RelatedProducts products={relatedProducts} />
