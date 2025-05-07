@@ -1,0 +1,19 @@
+
+User-agent: *
+Allow: /
+
+# Products
+Allow: /products/
+Allow: /categories/
+
+# Main pages
+Allow: /login
+Allow: /cart
+Allow: /checkout
+
+# Disallow admin area
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://bhagwatimedical.shop/sitemap.xml
+
