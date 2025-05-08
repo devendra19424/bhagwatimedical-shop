@@ -19,6 +19,11 @@ import OrderTrackingPage from "./pages/tracking/OrderTrackingPage";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProductManagement from "./pages/admin/ProductManagement";
 import CategoriesPage from "./pages/categories/CategoriesPage";
+import HealthArticlesPage from "./pages/health/HealthArticlesPage";
+import MedicineDatabasePage from "./pages/medicines/MedicineDatabasePage";
+import LocatorPage from "./pages/locator/LocatorPage";
+import LoyaltyProgramPage from "./pages/loyalty/LoyaltyProgramPage";
+import PharmacistChatPage from "./pages/chat/PharmacistChatPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -47,11 +52,18 @@ const App = () => (
                 
                 {/* User Routes */}
                 <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/loyalty" element={<LoyaltyProgramPage />} />
                 
                 {/* Product Routes */}
                 <Route path="/products" element={<ProductsPage />} />
                 <Route path="/products/:id" element={<ProductDetailPage />} />
                 <Route path="/categories" element={<CategoriesPage />} />
+                <Route path="/medicine-database" element={<MedicineDatabasePage />} />
+                
+                {/* Health Information Routes */}
+                <Route path="/health-articles" element={<HealthArticlesPage />} />
+                <Route path="/locate" element={<LocatorPage />} />
+                <Route path="/chat" element={<PharmacistChatPage />} />
                 
                 {/* Cart and Checkout */}
                 <Route path="/cart" element={<CartPage />} />

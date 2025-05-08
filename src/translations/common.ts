@@ -1,4 +1,3 @@
-
 export const commonTranslations = {
   storeName: {
     en: "Bhagwati Medical",
@@ -98,7 +97,7 @@ export const commonTranslations = {
   },
   cartEmpty: {
     en: "Your cart is empty",
-    hi: "आपका कार्ट खाली है",
+    hi: "आपका कार्त खाली है",
   },
   cartEmptyDescription: {
     en: "You don't have any items in your cart yet. Start shopping by visiting our products section.",
@@ -183,5 +182,125 @@ export const commonTranslations = {
   reminderUpdatedSuccess: {
     en: "Reminder updated successfully",
     hi: "रिमाइंडर सफलतापूर्वक अपडेट किया गया",
+  },
+  
+  // Medicine Information Database
+  medicineDatabase: {
+    en: "Medicine Database",
+    hi: "दवा डेटाबेस",
+  },
+  medicineDetails: {
+    en: "Medicine Details",
+    hi: "दवा विवरण",
+  },
+  activeIngredients: {
+    en: "Active Ingredients",
+    hi: "सक्रिय तत्व",
+  },
+  sideEffects: {
+    en: "Side Effects",
+    hi: "दुष्प्रभाव",
+  },
+  dosageInfo: {
+    en: "Dosage Information",
+    hi: "खुराक जानकारी",
+  },
+  
+  // Doctor/Pharmacy Locator
+  findNearbyDoctors: {
+    en: "Find Nearby Doctors",
+    hi: "पास के डॉक्टर खोजें",
+  },
+  findNearbyPharmacies: {
+    en: "Find Nearby Pharmacies",
+    hi: "पास की फार्मेसी खोजें",
+  },
+  searchByLocation: {
+    en: "Search by Location",
+    hi: "स्थान द्वारा खोजें",
+  },
+  distance: {
+    en: "Distance",
+    hi: "दूरी",
+  },
+  directions: {
+    en: "Get Directions",
+    hi: "रास्ता पाएं",
+  },
+  
+  // Loyalty Program
+  loyaltyProgram: {
+    en: "Loyalty Program",
+    hi: "लॉयल्टी प्रोग्राम",
+  },
+  yourPoints: {
+    en: "Your Points",
+    hi: "आपके अंक",
+  },
+  earnPoints: {
+    en: "Earn Points",
+    hi: "अंक अर्जित करें",
+  },
+  redeemPoints: {
+    en: "Redeem Points",
+    hi: "अंक रिडीम करें",
+  },
+  pointsHistory: {
+    en: "Points History",
+    hi: "अंक इतिहास",
+  },
+  
+  // Reviews & Ratings
+  reviews: {
+    en: "Reviews",
+    hi: "समीक्षाएं",
+  },
+  writeReview: {
+    en: "Write a Review",
+    hi: "समीक्षा लिखें",
+  },
+  rating: {
+    en: "Rating",
+    hi: "रेटिंग",
+  },
+  verified: {
+    en: "Verified Purchase",
+    hi: "सत्यापित खरीद",
+  },
+  
+  // Live Chat
+  liveChat: {
+    en: "Live Chat with Pharmacist",
+    hi: "फार्मासिस्ट से लाइव चैट",
+  },
+  startChat: {
+    en: "Start Chat",
+    hi: "चैट शुरू करें",
+  },
+  chatNow: {
+    en: "Chat Now",
+    hi: "अभी चैट करें",
+  },
+  askPharmacist: {
+    en: "Ask a Pharmacist",
+    hi: "फार्मासिस्ट से पूछें",
+  },
+  
+  // Medicine Reminder System (extending existing translations)
+  medicineReminders: {
+    en: "Medicine Reminders",
+    hi: "दवा रिमाइंडर",
+  },
+  addReminder: {
+    en: "Add Reminder",
+    hi: "रिमाइंडर जोड़ें",
+  },
+  upcomingReminders: {
+    en: "Upcoming Reminders",
+    hi: "आगामी रिमाइंडर",
+  },
+  activateNotifications: {
+    en: "Activate Notifications",
+    hi: "नोटिफिकेशन सक्रिय करें",
   },
 };
