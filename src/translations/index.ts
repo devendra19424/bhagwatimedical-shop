@@ -13,6 +13,7 @@ import { profileTranslations } from "./profile";
 import { adminTranslations } from "./admin";
 import { checkoutTranslations } from "./checkout";
 import { trackingTranslations } from "./tracking";
+import { chatTranslations } from "./chat";
 
 export const translations = {
   ...commonTranslations,
@@ -28,6 +29,7 @@ export const translations = {
   ...adminTranslations,
   ...checkoutTranslations,
   ...trackingTranslations,
+  ...chatTranslations,
 };
 
 export { productImages };

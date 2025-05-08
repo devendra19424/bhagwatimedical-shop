@@ -64,10 +64,9 @@ export const commonTranslations = {
     en: "Reorder Products",
     hi: "उत्पाद पुनः ऑर्डर करें"
   },
-  // Fixed duplicate key by renaming one of the medicineReminders to medicineReminderSystem
-  medicineReminders: {
-    en: "Medicine Reminders",
-    hi: "दवा रिमाइंडर",
+  medicineReminderSystem: {
+    en: "Medicine Reminder System",
+    hi: "दवा रिमाइंडर सिस्टम",
   },
   fastDelivery: {
     en: "Fast Delivery",
@@ -268,42 +267,6 @@ export const commonTranslations = {
   verified: {
     en: "Verified Purchase",
     hi: "सत्यापित खरीद",
-  },
-  
-  // Live Chat
-  liveChat: {
-    en: "Live Chat with Pharmacist",
-    hi: "फार्मासिस्ट से लाइव चैट",
-  },
-  startChat: {
-    en: "Start Chat",
-    hi: "चैट शुरू करें",
-  },
-  chatNow: {
-    en: "Chat Now",
-    hi: "अभी चैट करें",
-  },
-  askPharmacist: {
-    en: "Ask a Pharmacist",
-    hi: "फार्मासिस्ट से पूछें",
-  },
-  
-  // Medicine Reminder System
-  medicineReminderSystem: {
-    en: "Medicine Reminder System",
-    hi: "दवा रिमाइंडर सिस्टम",
-  },
-  addReminder: {
-    en: "Add Reminder",
-    hi: "रिमाइंडर जोड़ें",
-  },
-  upcomingReminders: {
-    en: "Upcoming Reminders",
-    hi: "आगामी रिमाइंडर",
-  },
-  activateNotifications: {
-    en: "Activate Notifications",
-    hi: "नोटिफिकेशन सक्रिय करें",
   },
   
   // Stock Status
