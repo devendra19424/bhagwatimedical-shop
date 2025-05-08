@@ -14,9 +14,22 @@ interface AddToCartButtonProps {
   imageUrl: string;
   category: string;
   quantity?: number;
+  variant?: string;
+  showIcon?: boolean;
+  size?: string;
 }
 
-const AddToCartButton = ({ productId, name, price, imageUrl, category, quantity = 1 }: AddToCartButtonProps) => {
+const AddToCartButton = ({ 
+  productId, 
+  name, 
+  price, 
+  imageUrl, 
+  category, 
+  quantity = 1,
+  variant = "default",
+  showIcon = true,
+  size = "default"
+}: AddToCartButtonProps) => {
   const { addToCart, cartItems } = useCart();
   const { t } = useLanguage();
   const isInCart = cartItems.some(item => item.id === productId);
@@ -49,9 +62,9 @@ const AddToCartButton = ({ productId, name, price, imageUrl, category, quantity 
 
   return (
     <Button
-      variant={isInCart ? "outline" : "default"}
-      size="sm"
-      className={`w-full ${isInCart ? 'text-green-600 border-green-600' : ''}`}
+      variant={isInCart ? "outline" : variant as any}
+      size={size as any}
+      className={`${showIcon ? 'w-full' : ''} ${isInCart ? 'text-green-600 border-green-600' : ''}`}
       onClick={handleAddToCart}
       disabled={isInCart || isAdding}
     >
@@ -62,7 +75,7 @@ const AddToCartButton = ({ productId, name, price, imageUrl, category, quantity 
           className="flex items-center"
         >
           <span className="mr-2">{t("adding")}</span>
-          <ShoppingCart className="h-4 w-4" />
+          {showIcon && <ShoppingCart className="h-4 w-4" />}
         </motion.div>
       ) : isInCart ? (
         <motion.div 
@@ -71,12 +84,12 @@ const AddToCartButton = ({ productId, name, price, imageUrl, category, quantity 
           className="flex items-center"
         >
           <span className="mr-2">{t("addedToCart")}</span>
-          <Check className="h-4 w-4" />
+          {showIcon && <Check className="h-4 w-4" />}
         </motion.div>
       ) : (
         <motion.div className="flex items-center">
           <span className="mr-2">{t("addToCart")}</span>
-          <ShoppingCart className="h-4 w-4" />
+          {showIcon && <ShoppingCart className="h-4 w-4" />}
         </motion.div>
       )}
     </Button>

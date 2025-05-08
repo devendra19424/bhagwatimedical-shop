@@ -61,7 +61,7 @@ const pharmacists = [
 ];
 
 // Sample conversations
-const defaultMessages = [
+const defaultMessages: Message[] = [
   {
     id: "m1",
     sender: "system",

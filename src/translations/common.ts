@@ -1,3 +1,4 @@
+
 export const commonTranslations = {
   storeName: {
     en: "Bhagwati Medical",
@@ -63,9 +64,10 @@ export const commonTranslations = {
     en: "Reorder Products",
     hi: "उत्पाद पुनः ऑर्डर करें"
   },
+  // Fixed duplicate key by renaming one of the medicineReminders to medicineReminderSystem
   medicineReminders: {
     en: "Medicine Reminders",
-    hi: "दवा रिमाइंडर"
+    hi: "दवा रिमाइंडर",
   },
   fastDelivery: {
     en: "Fast Delivery",
@@ -286,10 +288,10 @@ export const commonTranslations = {
     hi: "फार्मासिस्ट से पूछें",
   },
   
-  // Medicine Reminder System (extending existing translations)
-  medicineReminders: {
-    en: "Medicine Reminders",
-    hi: "दवा रिमाइंडर",
+  // Medicine Reminder System
+  medicineReminderSystem: {
+    en: "Medicine Reminder System",
+    hi: "दवा रिमाइंडर सिस्टम",
   },
   addReminder: {
     en: "Add Reminder",
@@ -302,5 +304,37 @@ export const commonTranslations = {
   activateNotifications: {
     en: "Activate Notifications",
     hi: "नोटिफिकेशन सक्रिय करें",
+  },
+  
+  // Stock Status
+  inStock: {
+    en: "In Stock",
+    hi: "स्टॉक में",
+  },
+  outOfStock: {
+    en: "Out of Stock",
+    hi: "स्टॉक में नहीं है",
+  },
+  
+  // Product Actions
+  addToCart: {
+    en: "Add to Cart",
+    hi: "कार्ट में जोड़ें",
+  },
+  addedToCart: {
+    en: "Added to Cart",
+    hi: "कार्ट में जोड़ा गया",
+  },
+  adding: {
+    en: "Adding...",
+    hi: "जोड़ रहे हैं...",
+  },
+  productAddedToCart: {
+    en: "Product Added to Cart",
+    hi: "उत्पाद कार्ट में जोड़ा गया",
+  },
+  productAddedDescription: {
+    en: "{quantity}{name} added to your cart",
+    hi: "{quantity}{name} आपके कार्ट में जोड़ा गया",
   },
 };

@@ -1,4 +1,3 @@
-
 import { useLanguage } from "@/context/LanguageContext";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -34,16 +33,11 @@ const MedicineDetailView = ({ medicine }: MedicineDetailViewProps) => {
           <div className="flex flex-col items-start md:items-end gap-2">
             <div className="text-2xl font-bold">₹{medicine.price}</div>
             <AddToCartButton
-              product={{
-                id: medicine.id,
-                name: medicine[`name_${lang}`],
-                price: medicine.price,
-                imageUrl: medicine.imageUrl,
-                category: medicine[`category_${lang}`]
-              }}
-              variant="default"
-              showIcon={true}
-              size="sm"
+              productId={medicine.id}
+              name={medicine[`name_${lang}`]}
+              price={medicine.price}
+              imageUrl={medicine.imageUrl}
+              category={medicine[`category_${lang}`]}
             />
           </div>
         </div>
