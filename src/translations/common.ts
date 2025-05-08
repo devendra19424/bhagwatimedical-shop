@@ -1,3 +1,4 @@
+
 export const commonTranslations = {
   storeName: {
     en: "Bhagwati Medical",
@@ -154,5 +155,33 @@ export const commonTranslations = {
   subtotal: {
     en: "Subtotal",
     hi: "सबटोटल",
+  },
+  uploadPrescriptionText: {
+    en: "Upload your prescription for quick medicine delivery. We accept JPG, PNG, and PDF files.",
+    hi: "त्वरित दवा वितरण के लिए अपना नुस्खा अपलोड करें। हम JPG, PNG और PDF फाइलें स्वीकार करते हैं।",
+  },
+  ofProducts: {
+    en: "of",
+    hi: "में से",
+  },
+  products: {
+    en: "products",
+    hi: "उत्पाद",
+  },
+  reminderDeleteConfirm: {
+    en: "Are you sure you want to delete this reminder?",
+    hi: "क्या आप वाकई इस रिमाइंडर को हटाना चाहते हैं?",
+  },
+  deleteReminderSuccess: {
+    en: "Reminder deleted successfully",
+    hi: "रिमाइंडर सफलतापूर्वक हटा दिया गया",
+  },
+  reminderCreatedSuccess: {
+    en: "Reminder created successfully",
+    hi: "रिमाइंडर सफलतापूर्वक बनाया गया",
+  },
+  reminderUpdatedSuccess: {
+    en: "Reminder updated successfully",
+    hi: "रिमाइंडर सफलतापूर्वक अपडेट किया गया",
   },
 };

@@ -1,3 +1,4 @@
+
 export const productTranslations = {
   allProducts: {
     en: "All Products",
@@ -142,5 +143,209 @@ export const productTranslations = {
   addedToCart: {
     en: "Added to Cart",
     hi: "कार्ट में जोड़ा गया",
-  }
-};
+  },
+  compareProducts: {
+    en: "Compare Products",
+    hi: "उत्पादों की तुलना करें",
+  },
+  prescriptionUpload: {
+    en: "Upload Prescription",
+    hi: "नुस्खा अपलोड करें",
+  },
+  medicineReminder: {
+    en: "Medicine Reminder",
+    hi: "दवा रिमाइंडर",
+  },
+  dropFilesHere: {
+    en: "Drop your files here",
+    hi: "अपनी फ़ाइलें यहां डालें",
+  },
+  clickToBrowse: {
+    en: "or click to browse",
+    hi: "या ब्राउज़ करने के लिए क्लिक करें",
+  },
+  selectedFiles: {
+    en: "Selected Files",
+    hi: "चयनित फ़ाइलें",
+  },
+  clearAll: {
+    en: "Clear All",
+    hi: "सभी हटाएं",
+  },
+  noFilesSelected: {
+    en: "No files selected",
+    hi: "कोई फ़ाइल चयनित नहीं",
+  },
+  takePhoto: {
+    en: "Take Photo",
+    hi: "फोटो लें",
+  },
+  upload: {
+    en: "Upload",
+    hi: "अपलोड करें",
+  },
+  uploadingProgress: {
+    en: "Uploading...",
+    hi: "अपलोड हो रहा है...",
+  },
+  uploadSuccess: {
+    en: "Upload Successful",
+    hi: "अपलोड सफल",
+  },
+  uploadSuccessDescription: {
+    en: "Your prescription has been uploaded successfully",
+    hi: "आपका नुस्खा सफलतापूर्वक अपलोड कर दिया गया है",
+  },
+  noFilesError: {
+    en: "No files selected",
+    hi: "कोई फ़ाइल चयनित नहीं",
+  },
+  noFilesErrorDescription: {
+    en: "Please select at least one prescription file to upload",
+    hi: "कृपया कम से कम एक नुस्खा फ़ाइल अपलोड करने के लिए चुनें",
+  },
+  takePrescriptionPhoto: {
+    en: "Take a photo of your prescription",
+    hi: "अपने नुस्खे की फोटो लें",
+  },
+  allowCameraAccess: {
+    en: "Allow camera access to take a photo of your prescription",
+    hi: "अपने नुस्खे की फोटो लेने के लिए कैमरा एक्सेस की अनुमति दें",
+  },
+  capture: {
+    en: "Capture",
+    hi: "कैप्चर करें",
+  },
+  cancel: {
+    en: "Cancel",
+    hi: "रद्द करें",
+  },
+  addReminder: {
+    en: "Add Reminder",
+    hi: "रिमाइंडर जोड़ें",
+  },
+  medicineReminderDesc: {
+    en: "Never miss your medications with our reminder system",
+    hi: "हमारी रिमाइंडर प्रणाली के साथ अपनी दवाओं को कभी न भूलें",
+  },
+  addOrEditReminder: {
+    en: "Add or Edit Reminder",
+    hi: "रिमाइंडर जोड़ें या संपादित करें",
+  },
+  medicineName: {
+    en: "Medicine Name",
+    hi: "दवा का नाम",
+  },
+  reminderTime: {
+    en: "Reminder Time",
+    hi: "रिमाइंडर समय",
+  },
+  frequency: {
+    en: "Frequency",
+    hi: "आवृत्ति",
+  },
+  dosageAmount: {
+    en: "Dosage Amount",
+    hi: "खुराक की मात्रा",
+  },
+  daily: {
+    en: "Daily",
+    hi: "दैनिक",
+  },
+  twiceDaily: {
+    en: "Twice Daily",
+    hi: "दिन में दो बार",
+  },
+  weekly: {
+    en: "Weekly",
+    hi: "साप्ताहिक",
+  },
+  monthly: {
+    en: "Monthly",
+    hi: "मासिक",
+  },
+  save: {
+    en: "Save",
+    hi: "सहेजें",
+  },
+  chooseTime: {
+    en: "Choose Time",
+    hi: "समय चुनें",
+  },
+  active: {
+    en: "Active",
+    hi: "सक्रिय",
+  },
+  inactive: {
+    en: "Inactive",
+    hi: "निष्क्रिय",
+  },
+  today: {
+    en: "Today",
+    hi: "आज",
+  },
+  upcoming: {
+    en: "Upcoming",
+    hi: "आगामी",
+  },
+  noReminders: {
+    en: "No reminders set",
+    hi: "कोई रिमाइंडर सेट नहीं",
+  },
+  noRemindersDesc: {
+    en: "Add your first medicine reminder to get started",
+    hi: "शुरू करने के लिए अपना पहला दवा रिमाइंडर जोड़ें",
+  },
+  maxComparisons: {
+    en: "Maximum products reached",
+    hi: "अधिकतम उत्पादों तक पहुंच गए",
+  },
+  maxComparisonsDesc: {
+    en: "You can compare up to {max} products at a time",
+    hi: "आप एक समय में {max} उत्पादों की तुलना कर सकते हैं",
+  },
+  productAlreadyAdded: {
+    en: "Product already added",
+    hi: "उत्पाद पहले से जोड़ा गया है",
+  },
+  productAlreadyAddedDesc: {
+    en: "This product is already in your comparison",
+    hi: "यह उत्पाद पहले से ही आपकी तुलना में है",
+  },
+  selectProductsCompare: {
+    en: "Select products to compare",
+    hi: "तुलना करने के लिए उत्पादों का चयन करें",
+  },
+  chooseProduct: {
+    en: "Choose a product",
+    hi: "एक उत्पाद चुनें",
+  },
+  addProduct: {
+    en: "Add product",
+    hi: "उत्पाद जोड़ें",
+  },
+  childSafe: {
+    en: "Child Safe",
+    hi: "बच्चों के लिए सुरक्षित",
+  },
+  sugarFree: {
+    en: "Sugar Free",
+    hi: "शुगर फ्री",
+  },
+  vegan: {
+    en: "Vegan",
+    hi: "शाकाहारी",
+  },
+  effectiveFor: {
+    en: "Effective For",
+    hi: "के लिए प्रभावी",
+  },
+  availability: {
+    en: "Availability",
+    hi: "उपलब्धता",
+  },
+  scrollCompare: {
+    en: "Scroll horizontally to see all comparison details",
+    hi: "सभी तुलना विवरण देखने के लिए क्षैतिज स्क्रॉल करें",
+  },
+}

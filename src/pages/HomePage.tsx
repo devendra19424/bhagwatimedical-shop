@@ -9,8 +9,6 @@ import MedicineReminder from "@/components/reminders/MedicineReminder";
 import HealthArticles from "@/components/health/HealthArticles";
 import PrescriptionUpload from "@/components/prescription/PrescriptionUpload";
 import ProductComparison from "@/components/products/ProductComparison";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { medicineData } from "@/data/medicineData";
 
 const HomePage = () => {
