@@ -1,4 +1,3 @@
-
 import { useLanguage } from "@/context/LanguageContext";
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/home/HeroSection";
@@ -61,7 +60,7 @@ const HomePage = () => {
                 <CardDescription>
                   {lang === "en" 
                     ? "Access detailed information about medications, including uses, dosage, and side effects" 
-                    : "उपयोग, खुराक और दुष्प्रभावों सहित दवाओं के बारे में विस्तृत जानकारी तक पहुंचें"}
+                    : "उपयोग, खुराक और दुष्���्रभावों सहित दवाओं के बारे में विस्तृत जानकारी तक पहुंचें"}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -79,7 +78,7 @@ const HomePage = () => {
                       <path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
                     <span>
-                      {lang === "en" ? "Side effect information" : "दुष्प्रभाव जानकारी"}
+                      {lang === "en" ? "Side effect information" : "दुष्���्रभाव जानकारी"}
                     </span>
                   </li>
                   <li className="flex items-center gap-2">
@@ -234,7 +233,7 @@ const HomePage = () => {
                 <CardDescription>
                   {lang === "en" 
                     ? "Earn points with every purchase and redeem them for exclusive discounts and benefits" 
-                    : "हर खरीदारी पर पॉइंट्स कमाएं और उन्हें विशेष छूट और लाभों के लिए रिडीम करें"}
+                    : "हर खरीदारी प�� पॉइंट्स कमाएं और उन्हें विशेष छूट और लाभों के लिए रिडीम करें"}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -291,7 +290,7 @@ const HomePage = () => {
                 <CardDescription>
                   {lang === "en" 
                     ? "Read informative articles about health topics, wellness tips, and medical news" 
-                    : "स्वास्थ्य विषयों, स्वास्थ्य सुझावों और चिकित्सा समाचारों के बारे में जानकारीपूर्ण लेख पढ़ें"}
+                    : "स्वास्थ्य विषयों, स्वास्थ्य सुझावों और चिकित्स�� समाचारों के बारे में जानकारीपूर्ण लेख पढ़ें"}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -348,7 +347,7 @@ const HomePage = () => {
                 <CardDescription>
                   {lang === "en" 
                     ? "Read and contribute product reviews to help others make informed decisions" 
-                    : "उत्पाद समीक्षाएँ पढ़ें और योगदान दें ताकि दूसरों को सूचित निर्णय लेने में मदद मिल सके"}
+                    : "उत्पाद समीक्षाएँ पढ़ें और योगदान दें ताकि दूसरों को सूचित ��िर्णय लेने में मदद मिल सके"}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -415,8 +414,8 @@ const HomePage = () => {
       <DeliveryInfo />
       <Testimonials />
       
-      {/* Add LivePharmacistChat as a widget */}
-      <LivePharmacistChat mode="widget" />
+      {/* Add LivePharmacistChat as a floating widget */}
+      <LivePharmacistChat mode="floating" />
     </Layout>
   );
 };

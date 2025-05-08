@@ -321,7 +321,7 @@ const LivePharmacistChat = ({ mode = "floating" }: LivePharmacistChatProps) => {
         </Card>
       ) : (
         <Button
-          variant="primary"
+          variant="default"
           className="fixed bottom-4 right-4 shadow-lg z-50"
           onClick={toggleChat}
         >
