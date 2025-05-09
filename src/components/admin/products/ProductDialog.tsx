@@ -54,7 +54,7 @@ export function ProductDialog({
                 <InfoIcon className="h-4 w-4 text-muted-foreground cursor-help" />
               </TooltipTrigger>
               <TooltipContent>
-                <p>{isEditing ? t("editProductTooltip", "Edit product details") : t("addProductTooltip", "Add new product to inventory")}</p>
+                <p>{isEditing ? t("editProductTooltip") : t("addProductTooltip")}</p>
               </TooltipContent>
             </Tooltip>
           </div>
