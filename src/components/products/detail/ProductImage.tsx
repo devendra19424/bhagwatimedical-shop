@@ -24,6 +24,11 @@ export function ProductImage({ imageUrl, name }: ProductImageProps) {
     
     setMagnifyPosition({ x, y });
   };
+
+  // Handle image error and show a placeholder if needed
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = "https://placehold.co/600x400?text=No+Image";
+  };
   
   return (
     <motion.div
@@ -50,12 +55,13 @@ export function ProductImage({ imageUrl, name }: ProductImageProps) {
             }}
           >
             <img
-              src={imageUrl}
+              src={imageUrl || "https://placehold.co/600x400?text=No+Image"}
               alt={name}
               className="w-full h-full object-contain p-4"
               style={isZoomed ? {
                 transformOrigin: `${magnifyPosition.x}% ${magnifyPosition.y}%`
               } : undefined}
+              onError={handleImageError}
             />
           </motion.div>
           

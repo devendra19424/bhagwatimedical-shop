@@ -1,15 +1,8 @@
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { ProductForm } from "./ProductForm";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ProductForm } from "@/components/admin/products/ProductForm";
 import { useLanguage } from "@/context/LanguageContext";
-import { Category, ProductFormData } from "@/types/admin";
+import { ProductFormData, Category } from "@/types/admin";
 
 interface ProductDialogProps {
   isOpen: boolean;
@@ -20,6 +13,7 @@ interface ProductDialogProps {
   handleSave: () => void;
   isEditing: boolean;
   resetForm: () => void;
+  onImageUpload?: (file: File) => void;
 }
 
 export function ProductDialog({
@@ -31,41 +25,31 @@ export function ProductDialog({
   handleSave,
   isEditing,
   resetForm,
+  onImageUpload,
 }: ProductDialogProps) {
   const { t } = useLanguage();
 
-  const handleClose = () => {
+  const onCancel = () => {
     setIsOpen(false);
     resetForm();
   };
 
   return (
-    <Dialog
-      open={isOpen}
-      onOpenChange={(open) => {
-        setIsOpen(open);
-        if (!open) {
-          resetForm();
-        }
-      }}
-    >
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogContent className="max-w-3xl">
         <DialogHeader>
           <DialogTitle>
-            {isEditing ? t("updateProduct") : t("addNewProduct")}
+            {isEditing ? t("editProduct") : t("addNewProduct")}
           </DialogTitle>
-          <DialogDescription>
-            {isEditing ? t("updateProductInfo") : t("addProductInfo")}
-          </DialogDescription>
         </DialogHeader>
-
         <ProductForm
           formData={formData}
           setFormData={setFormData}
           categories={categories}
           isEditing={isEditing}
           onSave={handleSave}
-          onCancel={handleClose}
+          onCancel={onCancel}
+          onImageUpload={onImageUpload}
         />
       </DialogContent>
     </Dialog>

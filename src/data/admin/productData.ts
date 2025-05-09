@@ -9,6 +9,7 @@ export const initialProducts: Product[] = [
     stock: 45,
     category: "पेन किलर",
     description: "बुखार और दर्द निवारक टैबलेट",
+    imageUrl: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&auto=format&fit=crop&w=800&h=600",
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ export const initialProducts: Product[] = [
     stock: 23,
     category: "विटामिन्स",
     description: "दैनिक पोषण सप्लीमेंट",
+    imageUrl: "https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&auto=format&fit=crop&w=800&h=600",
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ export const initialProducts: Product[] = [
     stock: 15,
     category: "स्वास्थ्य उपकरण",
     description: "त्वरित और सटीक तापमान माप",
+    imageUrl: "https://images.unsplash.com/photo-1588952159215-a4b39193464e?q=80&auto=format&fit=crop&w=800&h=600",
   },
   {
     id: 4,
@@ -33,6 +36,7 @@ export const initialProducts: Product[] = [
     stock: 32,
     category: "स्किन केयर",
     description: "99.9% जीवाणु नाशक",
+    imageUrl: "https://images.unsplash.com/photo-1584483720412-ce931f4aefa8?q=80&auto=format&fit=crop&w=800&h=600",
   },
   {
     id: 5,
@@ -41,7 +45,53 @@ export const initialProducts: Product[] = [
     stock: 18,
     category: "कफ और सर्दी",
     description: "खांसी निवारक सिरप",
+    imageUrl: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?q=80&auto=format&fit=crop&w=800&h=600",
   },
+  {
+    id: 6,
+    name: "एस्पिरिन",
+    price: 49.99,
+    stock: 50,
+    category: "पेन किलर",
+    description: "दर्द और सूजन कम करने वाली दवा",
+    imageUrl: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&auto=format&fit=crop&w=800&h=600",
+  },
+  {
+    id: 7,
+    name: "ग्लूकोमीटर",
+    price: 1299.99,
+    stock: 10,
+    category: "स्वास्थ्य उपकरण",
+    description: "रक्त शर्करा स्तर की निगरानी के लिए उपकरण",
+    imageUrl: "https://images.unsplash.com/photo-1624714766612-7eaf0faa89de?q=80&auto=format&fit=crop&w=800&h=600",
+  },
+  {
+    id: 8,
+    name: "बीपी मॉनिटर",
+    price: 1599.99,
+    stock: 8,
+    category: "स्वास्थ्य उपकरण",
+    description: "रक्तचाप मापने के लिए डिजिटल मॉनिटर",
+    imageUrl: "https://images.unsplash.com/photo-1631554673031-284d654dfba7?q=80&auto=format&fit=crop&w=800&h=600",
+  },
+  {
+    id: 9,
+    name: "मेटफॉर्मिन",
+    price: 199.99,
+    stock: 22,
+    category: "डायबिटीज",
+    description: "टाइप 2 मधुमेह के लिए दवा",
+    imageUrl: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&auto=format&fit=crop&w=800&h=600",
+  },
+  {
+    id: 10,
+    name: "ओमेप्राज़ोल",
+    price: 159.99,
+    stock: 28,
+    category: "पाचन स्वास्थ्य",
+    description: "एसिडिटी और अल्सर के लिए दवा",
+    imageUrl: "https://images.unsplash.com/photo-1626716493137-b67de7142a93?q=80&auto=format&fit=crop&w=800&h=600",
+  }
 ];
 
 export const categories: Category[] = [
@@ -54,6 +104,7 @@ export const categories: Category[] = [
   { id: "diabetes", name: "डायबिटीज" },
   { id: "heart", name: "हृदय स्वास्थ्य" },
   { id: "nutrition", name: "पोषण" },
+  { id: "digestive", name: "पाचन स्वास्थ्य" },
 ];
 
 export const initialFormData = {

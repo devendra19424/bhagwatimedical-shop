@@ -27,6 +27,11 @@ interface FeaturedProductsProps {
 const FeaturedProducts = ({ featuredMedicines = [] }: FeaturedProductsProps) => {
   const { lang, t } = useLanguage();
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
+  
+  // Handle image error and show a placeholder
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = "https://placehold.co/600x400?text=No+Image";
+  };
 
   return (
     <section className="py-12 bg-gradient-to-b from-white to-neutral-50">
@@ -58,9 +63,10 @@ const FeaturedProducts = ({ featuredMedicines = [] }: FeaturedProductsProps) => 
                 <Link to={`/products/${product.id}`}>
                   <div className="relative aspect-square overflow-hidden bg-neutral-50">
                     <img
-                      src={product.imageUrl}
+                      src={product.imageUrl || "https://placehold.co/600x400?text=No+Image"}
                       alt={product[`name_${lang}`]}
-                      className="object-contain w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
+                      className="object-contain w-full h-full p-2 transition-transform duration-300 ease-in-out hover:scale-105"
+                      onError={handleImageError}
                     />
                     <div className="absolute top-2 right-2 bg-white/90 text-primary text-xs py-1 px-2 rounded-full font-medium">
                       {product[`category_${lang}`]}
