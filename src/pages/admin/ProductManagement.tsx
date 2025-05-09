@@ -81,7 +81,7 @@ const ProductManagement = () => {
     };
     
     if (editingProduct) {
-      // Update existing
+      // Update existing product - fix to properly update the products array
       setProducts(
         products.map((p) => (p.id === editingProduct.id ? newProduct : p))
       );

@@ -77,10 +77,15 @@ const App = () => (
                 {/* Admin Routes */}
                 <Route path="/admin" element={<AdminDashboard />} />
                 <Route path="/admin/products" element={<ProductManagement />} />
+                <Route path="/admin/products/categories" element={<ProductManagement />} />
+                <Route path="/admin/products/inventory" element={<ProductManagement />} />
                 <Route path="/admin/orders" element={<OrdersManagement />} />
                 <Route path="/admin/delivery" element={<DeliveryManagement />} />
                 <Route path="/admin/users" element={<UsersManagement />} />
                 <Route path="/admin/settings" element={<SettingsManagement />} />
+                <Route path="/admin/reports/sales" element={<AdminDashboard />} />
+                <Route path="/admin/reports/inventory" element={<AdminDashboard />} />
+                <Route path="/admin/reports/customers" element={<AdminDashboard />} />
                 
                 {/* 404 Route */}
                 <Route path="*" element={<NotFound />} />
