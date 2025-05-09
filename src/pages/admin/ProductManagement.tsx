@@ -81,10 +81,12 @@ const ProductManagement = () => {
     };
     
     if (editingProduct) {
-      // Update existing product - fix to properly update the products array
-      setProducts(
-        products.map((p) => (p.id === editingProduct.id ? newProduct : p))
+      // Properly update existing product in the array
+      const updatedProducts = products.map((product) => 
+        product.id === editingProduct.id ? newProduct : product
       );
+      setProducts(updatedProducts);
+      
       toast.success(t("productUpdated"), {
         description: newProduct.name
       });
