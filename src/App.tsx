@@ -42,7 +42,7 @@ const queryClient = new QueryClient({
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
-      <TooltipProvider>
+      <TooltipProvider delayDuration={300}>
         <LanguageProvider>
           <CartProvider>
             <Toaster />
