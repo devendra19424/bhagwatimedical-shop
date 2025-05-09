@@ -29,3 +29,14 @@ export interface Category {
   id: string;
   name: string;
 }
+
+export interface NavigationSubItem {
+  name: string;
+  href: string;
+  current: boolean;
+}
+
+export interface NavigationBadge {
+  count: number;
+  color: string;
+}

@@ -18,6 +18,10 @@ import CheckoutPage from "./pages/checkout/CheckoutPage";
 import OrderTrackingPage from "./pages/tracking/OrderTrackingPage";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProductManagement from "./pages/admin/ProductManagement";
+import OrdersManagement from "./pages/admin/OrdersManagement";
+import DeliveryManagement from "./pages/admin/DeliveryManagement";
+import UsersManagement from "./pages/admin/UsersManagement";
+import SettingsManagement from "./pages/admin/SettingsManagement";
 import CategoriesPage from "./pages/categories/CategoriesPage";
 import HealthArticlesPage from "./pages/health/HealthArticlesPage";
 import MedicineDatabasePage from "./pages/medicines/MedicineDatabasePage";
@@ -73,6 +77,10 @@ const App = () => (
                 {/* Admin Routes */}
                 <Route path="/admin" element={<AdminDashboard />} />
                 <Route path="/admin/products" element={<ProductManagement />} />
+                <Route path="/admin/orders" element={<OrdersManagement />} />
+                <Route path="/admin/delivery" element={<DeliveryManagement />} />
+                <Route path="/admin/users" element={<UsersManagement />} />
+                <Route path="/admin/settings" element={<SettingsManagement />} />
                 
                 {/* 404 Route */}
                 <Route path="*" element={<NotFound />} />
