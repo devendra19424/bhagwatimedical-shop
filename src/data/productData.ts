@@ -1,12 +1,11 @@
-
 // Mock product data for development
 export const products = [
   {
     id: "1",
     name_en: "Paracetamol",
     name_hi: "पैरासिटामोल",
-    imageUrl: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
-    price: 25.99,
+    imageUrl: "https://5.imimg.com/data5/SELLER/Default/2022/9/QR/AF/MV/69966959/paracip-paracetamol-650-tablet.jpg",
+    price: 20.00,
     description_en: "Paracetamol is a pain and fever reducing medication used to treat mild to moderate pain.",
     description_hi: "पैरासिटामोल एक दर्द और बुखार कम करने वाली दवा है जो हल्के से मध्यम दर्द के इलाज के लिए उपयोग की जाती है।",
     category_en: "Pain Killers",
@@ -46,7 +45,7 @@ export const products = [
     id: "2",
     name_en: "Multivitamin",
     name_hi: "मल्टीविटामिन",
-    imageUrl: "https://images.unsplash.com/photo-1550572017-edd951b55104?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    imageUrl: "https://5.imimg.com/data5/SELLER/Default/2022/12/ED/JR/DL/108376694/cipmox-amoxicillin-250mg-capsules.png",
     price: 299.99,
     description_en: "Daily nutritional supplement",
     description_hi: "दैनिक पोषण सप्लीमेंट",
@@ -81,26 +80,11 @@ export const products = [
     deliveryInfo_hi: "इटारसी क्षेत्र में 60 मिनट के भीतर डिलीवरी",
     related: [1, 8],
   },
-];
-
-// Related products data
-export const relatedProducts = [
   {
-    id: "2", // Changed from number to string to match the actual data type
-    name_en: "Multivitamin",
-    name_hi: "मल्टीविटामिन",
-    imageUrl: "https://images.unsplash.com/photo-1550572017-edd951b55104?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
-    price: 299.99,
-    description_en: "Daily nutritional supplement",
-    description_hi: "दैनिक पोषण सप्लीमेंट",
-    category_en: "Vitamins",
-    category_hi: "विटामिन्स",
-  },
-  {
-    id: "5", // Changed from number to string to match the actual data type
+    id: "5",
     name_en: "Cough Syrup",
     name_hi: "कफ सिरप",
-    imageUrl: "https://images.unsplash.com/photo-1603807008857-ad66b70431e2?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    imageUrl: "https://5.imimg.com/data5/SELLER/Default/2023/6/319597573/MH/NE/SR/135658020/ibuprofen-400-mg-bp-tablets-500x500.jpg",
     price: 99.99,
     description_en: "Cough relief syrup",
     description_hi: "खांसी निवारक सिरप",
@@ -108,10 +92,10 @@ export const relatedProducts = [
     category_hi: "कफ और सर्दी",
   },
   {
-    id: "8", // Changed from number to string to match the actual data type
+    id: "8",
     name_en: "Protein Powder",
     name_hi: "प्रोटीन पाउडर",
-    imageUrl: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?h=500&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&w=800",
+    imageUrl: "https://5.imimg.com/data5/SELLER/Default/2024/9/453699709/CH/EL/TV/2474176/aspirin-tablets.jpeg",
     price: 999.99,
     description_en: "Pure whey protein",
     description_hi: "शुद्ध व्हे प्रोटीन",
@@ -119,3 +103,64 @@ export const relatedProducts = [
     category_hi: "पोषण",
   },
 ];
+
+// Related products data
+export const relatedProducts = [
+  {
+    id: "2",
+    name_en: "Multivitamin",
+    name_hi: "मल्टीविटामिन",
+    imageUrl: "https://5.imimg.com/data5/SELLER/Default/2022/12/ED/JR/DL/108376694/cipmox-amoxicillin-250mg-capsules.png",
+    price: 299.99,
+    description_en: "Daily nutritional supplement",
+    description_hi: "दैनिक पोषण सप्लीमेंट",
+    category_en: "Vitamins",
+    category_hi: "विटामिन्स",
+  },
+  {
+    id: "5",
+    name_en: "Cough Syrup",
+    name_hi: "कफ सिरप",
+    imageUrl: "https://5.imimg.com/data5/SELLER/Default/2023/6/319597573/MH/NE/SR/135658020/ibuprofen-400-mg-bp-tablets-500x500.jpg",
+    price: 99.99,
+    description_en: "Cough relief syrup",
+    description_hi: "खांसी निवारक सिरप",
+    category_en: "Cold & Cough",
+    category_hi: "कफ और सर्दी",
+  },
+  {
+    id: "8",
+    name_en: "Protein Powder",
+    name_hi: "प्रोटीन पाउडर",
+    imageUrl: "https://5.imimg.com/data5/SELLER/Default/2024/9/453699709/CH/EL/TV/2474176/aspirin-tablets.jpeg",
+    price: 999.99,
+    description_en: "Pure whey protein",
+    description_hi: "शुद्ध व्हे प्रोटीन",
+    category_en: "Nutrition",
+    category_hi: "पोषण",
+  },
+];
+
+export const productImages = {
+  painKillers: {
+    name: {
+      en: "Pain Killers",
+      hi: "दर्द निवारक"
+    },
+    image: "https://5.imimg.com/data5/SELLER/Default/2022/9/QR/AF/MV/69966959/paracip-paracetamol-650-tablet.jpg"
+  },
+  coughSyrup: {
+    name: {
+      en: "Cough Syrup",
+      hi: "खांसी का सिरप"
+    },
+    image: "https://5.imimg.com/data5/SELLER/Default/2023/6/319597573/MH/NE/SR/135658020/ibuprofen-400-mg-bp-tablets-500x500.jpg"
+  },
+  vitamins: {
+    name: {
+      en: "Vitamins",
+      hi: "विटामिन्स"
+    },
+    image: "https://5.imimg.com/data5/SELLER/Default/2022/12/ED/JR/DL/108376694/cipmox-amoxicillin-250mg-capsules.png"
+  },
+};

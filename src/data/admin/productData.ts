@@ -1,4 +1,3 @@
-
 import { Product, Category } from "@/types/admin";
 
 export const initialProducts: Product[] = [
@@ -18,7 +17,7 @@ export const initialProducts: Product[] = [
     stock: 23,
     category: "विटामिन्स",
     description: "दैनिक पोषण सप्लीमेंट",
-    imageUrl: "https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&auto=format&fit=crop&w=800&h=600",
+    imageUrl: "https://5.imimg.com/data5/SELLER/Default/2022/12/ED/JR/DL/108376694/cipmox-amoxicillin-250mg-capsules.png",
   },
   {
     id: 3,
